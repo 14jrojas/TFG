@@ -1,0 +1,904 @@
+2023-05-26 00:47:52,839 Namespace(cfg='./experiments/memory/cls_mdeq_LARGE.yaml', modelDir='', logDir='', dataDir='', testModel='', percent=1.0, opts=[])
+2023-05-26 00:47:52,839 CfgNode({'OUTPUT_DIR': 'output/', 'LOG_DIR': 'log/', 'DATA_DIR': '', 'GPUS': (0,), 'WORKERS': 2, 'PERCENT': 1.0, 'PRINT_FREQ': 100, 'AUTO_RESUME': False, 'PIN_MEMORY': True, 'RANK': 0, 'CUDNN': CfgNode({'BENCHMARK': True, 'DETERMINISTIC': False, 'ENABLED': True}), 'MODEL': CfgNode({'NAME': 'mdeq', 'INIT_WEIGHTS': True, 'WNORM': True, 'PRETRAINED': '', 'NUM_JOINTS': 17, 'NUM_LAYERS': 8, 'NUM_GROUPS': 8, 'DROPOUT': 0.22, 'NUM_CLASSES': 10, 'DOWNSAMPLE_TIMES': 0, 'EXPANSION_FACTOR': 5, 'BLOCK_GN_AFFINE': True, 'FUSE_GN_AFFINE': True, 'POST_GN_AFFINE': False, 'CONV_INJECTION': False, 'TAG_PER_JOINT': True, 'TARGET_TYPE': 'gaussian', 'IMAGE_SIZE': [32, 32], 'HEATMAP_SIZE': [64, 64], 'SIGMA': 2, 'EXTRA': CfgNode({'FULL_STAGE': CfgNode({'NUM_MODULES': 1, 'NUM_BRANCHES': 4, 'BLOCK': 'BASIC', 'BIG_KERNELS': [0, 0, 0, 0], 'HEAD_CHANNELS': [14, 28, 56, 112], 'FINAL_CHANSIZE': 1680, 'NUM_BLOCKS': [1, 1, 1, 1], 'NUM_CHANNELS': [32, 64, 128, 256], 'FUSE_METHOD': 'SUM'})})}), 'DEQ': CfgNode({'F_SOLVER': 'broyden', 'B_SOLVER': 'broyden', 'STOP_MODE': 'rel', 'RAND_F_THRES_DELTA': 2, 'F_THRES': 8, 'B_THRES': 7, 'SPECTRAL_RADIUS_MODE': False}), 'LOSS': CfgNode({'JAC_LOSS_FREQ': 0.0, 'JAC_LOSS_WEIGHT': 0.0, 'JAC_INCREMENTAL': 100000000, 'JAC_STOP_EPOCH': 100000000, 'PRETRAIN_JAC_LOSS_WEIGHT': 0.0, 'USE_OHEM': False, 'OHEMTHRES': 0.9, 'OHEMKEEP': 100000, 'CLASS_BALANCE': True, 'TOPK': 8, 'USE_TARGET_WEIGHT': True, 'USE_DIFFERENT_JOINTS_WEIGHT': False}), 'DATASET': CfgNode({'ROOT': 'data/cifar10/', 'DATASET': 'cifar10', 'TRAIN_SET': 'train', 'NUM_CLASSES': 1000, 'TEST_SET': 'val', 'DATA_FORMAT': 'jpg', 'HYBRID_JOINTS_TYPE': '', 'SELECT_DATA': False, 'EXTRA_TRAIN_SET': '', 'AUGMENT': True, 'FLIP': True, 'SCALE_FACTOR': 0.25, 'ROT_FACTOR': 30, 'PROB_HALF_BODY': 0.0, 'NUM_JOINTS_HALF_BODY': 8, 'COLOR_RGB': False}), 'TRAIN': CfgNode({'IMAGE_SIZE': [1024, 512], 'BASE_SIZE': 2048, 'DOWNSAMPLERATE': 1, 'FLIP': True, 'MULTI_SCALE': True, 'SCALE_FACTOR': 16, 'CLIP': -1.0, 'LR_FACTOR': 0.1, 'LR_STEP': [30, 60, 90], 'LR': 0.001, 'LR_SCHEDULER': 'cosine', 'EXTRA_LR': 0.001, 'OPTIMIZER': 'adam', 'MOMENTUM': 0.98, 'WD': 0.0, 'NESTEROV': True, 'GAMMA1': 0.99, 'GAMMA2': 0.0, 'PRETRAIN_STEPS': 16000, 'IGNORE_LABEL': -1, 'BEGIN_EPOCH': 0, 'END_EPOCH': 50, 'EXTRA_EPOCH': 0, 'RESUME': False, 'ANALYSIS': False, 'CHECKPOINT': '', 'MODEL_FILE': '', 'BATCH_SIZE_PER_GPU': 32, 'SHUFFLE': True}), 'TEST': CfgNode({'BATCH_SIZE_PER_GPU': 32, 'IMAGE_SIZE': [2048, 1024], 'BASE_SIZE': 2048, 'NUM_SAMPLES': 0, 'TEST_ONLY': False, 'FLIP_TEST': False, 'POST_PROCESS': False, 'SHIFT_HEATMAP': False, 'MULTI_SCALE': False, 'CENTER_CROP_TEST': False, 'SCALE_LIST': [1], 'USE_GT_BBOX': False, 'IMAGE_THRE': 0.1, 'NMS_THRE': 0.6, 'SOFT_NMS': False, 'OKS_THRE': 0.5, 'IN_VIS_THRE': 0.0, 'COCO_BBOX_FILE': '', 'BBOX_THRE': 1.0, 'MODEL_FILE': ''}), 'DEBUG': CfgNode({'DEBUG': False, 'SAVE_BATCH_IMAGES_GT': False, 'SAVE_BATCH_IMAGES_PRED': False, 'SAVE_HEATMAPS_GT': False, 'SAVE_HEATMAPS_PRED': False})})
+2023-05-26 00:47:53,092 => init weights from normal distribution
+2023-05-26 00:48:07,171 Epoch: [0][0/1562] (0)	Time 12.263s	Speed 2.6 samples/s	Data 10.025s	Loss 2.32546	Jac (gamma) 0.0000 (0.0000)	Acc@1 12.500	
+2023-05-26 00:48:19,940 Epoch: [0][100/1562] (100)	Time 0.248s	Speed 129.1 samples/s	Data 0.100s	Loss 2.12524	Jac (gamma) 0.0000 (0.0000)	Acc@1 19.400	
+2023-05-26 00:48:32,422 Epoch: [0][200/1562] (200)	Time 0.187s	Speed 171.5 samples/s	Data 0.050s	Loss 2.05741	Jac (gamma) 0.0000 (0.0000)	Acc@1 22.030	
+2023-05-26 00:48:45,252 Epoch: [0][300/1562] (300)	Time 0.167s	Speed 191.3 samples/s	Data 0.034s	Loss 2.01307	Jac (gamma) 0.0000 (0.0000)	Acc@1 23.879	
+2023-05-26 00:48:57,660 Epoch: [0][400/1562] (400)	Time 0.156s	Speed 204.5 samples/s	Data 0.025s	Loss 1.96635	Jac (gamma) 0.0000 (0.0000)	Acc@1 25.709	
+2023-05-26 00:49:10,259 Epoch: [0][500/1562] (500)	Time 0.150s	Speed 212.8 samples/s	Data 0.020s	Loss 1.92978	Jac (gamma) 0.0000 (0.0000)	Acc@1 27.221	
+2023-05-26 00:49:22,867 Epoch: [0][600/1562] (600)	Time 0.146s	Speed 218.7 samples/s	Data 0.017s	Loss 1.89353	Jac (gamma) 0.0000 (0.0000)	Acc@1 28.843	
+2023-05-26 00:49:35,885 Epoch: [0][700/1562] (700)	Time 0.144s	Speed 222.2 samples/s	Data 0.015s	Loss 1.86024	Jac (gamma) 0.0000 (0.0000)	Acc@1 30.122	
+2023-05-26 00:49:48,786 Epoch: [0][800/1562] (800)	Time 0.142s	Speed 225.1 samples/s	Data 0.013s	Loss 1.83016	Jac (gamma) 0.0000 (0.0000)	Acc@1 31.324	
+2023-05-26 00:50:01,323 Epoch: [0][900/1562] (900)	Time 0.140s	Speed 228.1 samples/s	Data 0.012s	Loss 1.80878	Jac (gamma) 0.0000 (0.0000)	Acc@1 32.207	
+2023-05-26 00:50:14,166 Epoch: [0][1000/1562] (1000)	Time 0.139s	Speed 230.0 samples/s	Data 0.010s	Loss 1.78565	Jac (gamma) 0.0000 (0.0000)	Acc@1 33.173	
+2023-05-26 00:50:27,477 Epoch: [0][1100/1562] (1100)	Time 0.139s	Speed 230.9 samples/s	Data 0.010s	Loss 1.76332	Jac (gamma) 0.0000 (0.0000)	Acc@1 34.071	
+2023-05-26 00:50:40,216 Epoch: [0][1200/1562] (1200)	Time 0.138s	Speed 232.5 samples/s	Data 0.009s	Loss 1.74133	Jac (gamma) 0.0000 (0.0000)	Acc@1 35.033	
+2023-05-26 00:50:53,119 Epoch: [0][1300/1562] (1300)	Time 0.137s	Speed 233.6 samples/s	Data 0.008s	Loss 1.71783	Jac (gamma) 0.0000 (0.0000)	Acc@1 36.047	
+2023-05-26 00:51:05,912 Epoch: [0][1400/1562] (1400)	Time 0.136s	Speed 234.7 samples/s	Data 0.008s	Loss 1.69658	Jac (gamma) 0.0000 (0.0000)	Acc@1 36.846	
+2023-05-26 00:51:18,782 Epoch: [0][1500/1562] (1500)	Time 0.136s	Speed 235.6 samples/s	Data 0.007s	Loss 1.67535	Jac (gamma) 0.0000 (0.0000)	Acc@1 37.719	
+2023-05-26 00:51:50,270 Test: Time 0.068	Loss 1.3868	Acc@1 51.492	
+2023-05-26 00:51:50,276 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 00:52:01,158 Epoch: [1][0/1562] (1562)	Time 10.490s	Speed 3.1 samples/s	Data 10.336s	Loss 1.12085	Jac (gamma) 0.0000 (0.0000)	Acc@1 59.375	
+2023-05-26 00:52:14,375 Epoch: [1][100/1562] (1662)	Time 0.235s	Speed 136.3 samples/s	Data 0.103s	Loss 1.33619	Jac (gamma) 0.0000 (0.0000)	Acc@1 51.330	
+2023-05-26 00:52:27,482 Epoch: [1][200/1562] (1762)	Time 0.183s	Speed 174.7 samples/s	Data 0.052s	Loss 1.32099	Jac (gamma) 0.0000 (0.0000)	Acc@1 52.052	
+2023-05-26 00:52:40,085 Epoch: [1][300/1562] (1862)	Time 0.164s	Speed 194.9 samples/s	Data 0.035s	Loss 1.30481	Jac (gamma) 0.0000 (0.0000)	Acc@1 52.679	
+2023-05-26 00:52:52,722 Epoch: [1][400/1562] (1962)	Time 0.155s	Speed 206.8 samples/s	Data 0.026s	Loss 1.29032	Jac (gamma) 0.0000 (0.0000)	Acc@1 53.390	
+2023-05-26 00:53:05,158 Epoch: [1][500/1562] (2062)	Time 0.149s	Speed 215.2 samples/s	Data 0.021s	Loss 1.28198	Jac (gamma) 0.0000 (0.0000)	Acc@1 53.942	
+2023-05-26 00:53:18,101 Epoch: [1][600/1562] (2162)	Time 0.145s	Speed 220.0 samples/s	Data 0.018s	Loss 1.27345	Jac (gamma) 0.0000 (0.0000)	Acc@1 54.014	
+2023-05-26 00:53:30,946 Epoch: [1][700/1562] (2262)	Time 0.143s	Speed 223.7 samples/s	Data 0.015s	Loss 1.26442	Jac (gamma) 0.0000 (0.0000)	Acc@1 54.262	
+2023-05-26 00:53:43,899 Epoch: [1][800/1562] (2362)	Time 0.141s	Speed 226.4 samples/s	Data 0.013s	Loss 1.25267	Jac (gamma) 0.0000 (0.0000)	Acc@1 54.732	
+2023-05-26 00:53:56,645 Epoch: [1][900/1562] (2462)	Time 0.140s	Speed 228.9 samples/s	Data 0.012s	Loss 1.24222	Jac (gamma) 0.0000 (0.0000)	Acc@1 55.137	
+2023-05-26 00:54:09,491 Epoch: [1][1000/1562] (2562)	Time 0.139s	Speed 230.7 samples/s	Data 0.011s	Loss 1.23141	Jac (gamma) 0.0000 (0.0000)	Acc@1 55.623	
+2023-05-26 00:54:22,079 Epoch: [1][1100/1562] (2662)	Time 0.138s	Speed 232.7 samples/s	Data 0.010s	Loss 1.22280	Jac (gamma) 0.0000 (0.0000)	Acc@1 55.878	
+2023-05-26 00:54:34,812 Epoch: [1][1200/1562] (2762)	Time 0.137s	Speed 234.1 samples/s	Data 0.009s	Loss 1.21328	Jac (gamma) 0.0000 (0.0000)	Acc@1 56.247	
+2023-05-26 00:54:47,575 Epoch: [1][1300/1562] (2862)	Time 0.136s	Speed 235.3 samples/s	Data 0.008s	Loss 1.20268	Jac (gamma) 0.0000 (0.0000)	Acc@1 56.687	
+2023-05-26 00:55:00,027 Epoch: [1][1400/1562] (2962)	Time 0.135s	Speed 236.8 samples/s	Data 0.008s	Loss 1.19514	Jac (gamma) 0.0000 (0.0000)	Acc@1 57.002	
+2023-05-26 00:55:12,953 Epoch: [1][1500/1562] (3062)	Time 0.135s	Speed 237.5 samples/s	Data 0.007s	Loss 1.18563	Jac (gamma) 0.0000 (0.0000)	Acc@1 57.322	
+2023-05-26 00:55:44,246 Test: Time 0.068	Loss 1.0281	Acc@1 63.592	
+2023-05-26 00:55:44,253 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 00:55:55,161 Epoch: [2][0/1562] (3124)	Time 10.484s	Speed 3.1 samples/s	Data 10.333s	Loss 1.37624	Jac (gamma) 0.0000 (0.0000)	Acc@1 53.125	
+2023-05-26 00:56:07,926 Epoch: [2][100/1562] (3224)	Time 0.230s	Speed 139.0 samples/s	Data 0.103s	Loss 1.07405	Jac (gamma) 0.0000 (0.0000)	Acc@1 62.655	
+2023-05-26 00:56:20,889 Epoch: [2][200/1562] (3324)	Time 0.180s	Speed 177.6 samples/s	Data 0.052s	Loss 1.06293	Jac (gamma) 0.0000 (0.0000)	Acc@1 62.547	
+2023-05-26 00:56:33,758 Epoch: [2][300/1562] (3424)	Time 0.163s	Speed 196.3 samples/s	Data 0.035s	Loss 1.04982	Jac (gamma) 0.0000 (0.0000)	Acc@1 62.998	
+2023-05-26 00:56:46,720 Epoch: [2][400/1562] (3524)	Time 0.155s	Speed 206.8 samples/s	Data 0.026s	Loss 1.04305	Jac (gamma) 0.0000 (0.0000)	Acc@1 63.116	
+2023-05-26 00:56:59,503 Epoch: [2][500/1562] (3624)	Time 0.149s	Speed 214.3 samples/s	Data 0.021s	Loss 1.03770	Jac (gamma) 0.0000 (0.0000)	Acc@1 63.436	
+2023-05-26 00:57:11,970 Epoch: [2][600/1562] (3724)	Time 0.145s	Speed 220.3 samples/s	Data 0.018s	Loss 1.02746	Jac (gamma) 0.0000 (0.0000)	Acc@1 63.686	
+2023-05-26 00:57:25,133 Epoch: [2][700/1562] (3824)	Time 0.143s	Speed 223.3 samples/s	Data 0.015s	Loss 1.01604	Jac (gamma) 0.0000 (0.0000)	Acc@1 64.158	
+2023-05-26 00:57:37,298 Epoch: [2][800/1562] (3924)	Time 0.141s	Speed 227.6 samples/s	Data 0.013s	Loss 1.01169	Jac (gamma) 0.0000 (0.0000)	Acc@1 64.341	
+2023-05-26 00:57:50,445 Epoch: [2][900/1562] (4024)	Time 0.140s	Speed 229.3 samples/s	Data 0.012s	Loss 1.00643	Jac (gamma) 0.0000 (0.0000)	Acc@1 64.567	
+2023-05-26 00:58:03,379 Epoch: [2][1000/1562] (4124)	Time 0.139s	Speed 230.9 samples/s	Data 0.011s	Loss 0.99960	Jac (gamma) 0.0000 (0.0000)	Acc@1 64.807	
+2023-05-26 00:58:16,160 Epoch: [2][1100/1562] (4224)	Time 0.138s	Speed 232.6 samples/s	Data 0.010s	Loss 0.99617	Jac (gamma) 0.0000 (0.0000)	Acc@1 64.861	
+2023-05-26 00:58:29,063 Epoch: [2][1200/1562] (4324)	Time 0.137s	Speed 233.8 samples/s	Data 0.009s	Loss 0.98769	Jac (gamma) 0.0000 (0.0000)	Acc@1 65.154	
+2023-05-26 00:58:42,253 Epoch: [2][1300/1562] (4424)	Time 0.136s	Speed 234.5 samples/s	Data 0.008s	Loss 0.98040	Jac (gamma) 0.0000 (0.0000)	Acc@1 65.368	
+2023-05-26 00:58:55,081 Epoch: [2][1400/1562] (4524)	Time 0.136s	Speed 235.5 samples/s	Data 0.008s	Loss 0.97471	Jac (gamma) 0.0000 (0.0000)	Acc@1 65.547	
+2023-05-26 00:59:07,767 Epoch: [2][1500/1562] (4624)	Time 0.135s	Speed 236.5 samples/s	Data 0.007s	Loss 0.96908	Jac (gamma) 0.0000 (0.0000)	Acc@1 65.731	
+2023-05-26 00:59:39,573 Test: Time 0.068	Loss 0.8946	Acc@1 69.411	
+2023-05-26 00:59:39,577 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 00:59:50,396 Epoch: [3][0/1562] (4686)	Time 10.395s	Speed 3.1 samples/s	Data 10.249s	Loss 0.76726	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.125	
+2023-05-26 01:00:03,321 Epoch: [3][100/1562] (4786)	Time 0.231s	Speed 138.6 samples/s	Data 0.102s	Loss 0.84097	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.637	
+2023-05-26 01:00:16,196 Epoch: [3][200/1562] (4886)	Time 0.180s	Speed 177.7 samples/s	Data 0.051s	Loss 0.85510	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.336	
+2023-05-26 01:00:28,680 Epoch: [3][300/1562] (4986)	Time 0.162s	Speed 197.9 samples/s	Data 0.034s	Loss 0.85071	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.484	
+2023-05-26 01:00:41,287 Epoch: [3][400/1562] (5086)	Time 0.153s	Speed 209.4 samples/s	Data 0.026s	Loss 0.85848	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.114	
+2023-05-26 01:00:54,282 Epoch: [3][500/1562] (5186)	Time 0.148s	Speed 215.8 samples/s	Data 0.021s	Loss 0.85880	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.210	
+2023-05-26 01:01:06,715 Epoch: [3][600/1562] (5286)	Time 0.144s	Speed 221.8 samples/s	Data 0.017s	Loss 0.85226	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.279	
+2023-05-26 01:01:19,190 Epoch: [3][700/1562] (5386)	Time 0.141s	Speed 226.2 samples/s	Data 0.015s	Loss 0.85049	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.333	
+2023-05-26 01:01:32,001 Epoch: [3][800/1562] (5486)	Time 0.140s	Speed 228.9 samples/s	Data 0.013s	Loss 0.84954	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.396	
+2023-05-26 01:01:44,868 Epoch: [3][900/1562] (5586)	Time 0.139s	Speed 230.9 samples/s	Data 0.012s	Loss 0.84855	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.429	
+2023-05-26 01:01:57,685 Epoch: [3][1000/1562] (5686)	Time 0.138s	Speed 232.7 samples/s	Data 0.011s	Loss 0.84357	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.554	
+2023-05-26 01:02:10,631 Epoch: [3][1100/1562] (5786)	Time 0.137s	Speed 233.9 samples/s	Data 0.010s	Loss 0.83823	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.725	
+2023-05-26 01:02:23,702 Epoch: [3][1200/1562] (5886)	Time 0.136s	Speed 234.8 samples/s	Data 0.009s	Loss 0.83402	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.800	
+2023-05-26 01:02:36,524 Epoch: [3][1300/1562] (5986)	Time 0.136s	Speed 235.8 samples/s	Data 0.008s	Loss 0.83277	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.823	
+2023-05-26 01:02:49,212 Epoch: [3][1400/1562] (6086)	Time 0.135s	Speed 236.9 samples/s	Data 0.008s	Loss 0.82852	Jac (gamma) 0.0000 (0.0000)	Acc@1 70.954	
+2023-05-26 01:03:02,299 Epoch: [3][1500/1562] (6186)	Time 0.135s	Speed 237.4 samples/s	Data 0.007s	Loss 0.82569	Jac (gamma) 0.0000 (0.0000)	Acc@1 71.009	
+2023-05-26 01:03:33,031 Test: Time 0.067	Loss 0.7574	Acc@1 73.347	
+2023-05-26 01:03:33,036 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:03:44,226 Epoch: [4][0/1562] (6248)	Time 10.777s	Speed 3.0 samples/s	Data 10.565s	Loss 0.80150	Jac (gamma) 0.0000 (0.0000)	Acc@1 71.875	
+2023-05-26 01:03:57,145 Epoch: [4][100/1562] (6348)	Time 0.235s	Speed 136.4 samples/s	Data 0.105s	Loss 0.73963	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.691	
+2023-05-26 01:04:10,541 Epoch: [4][200/1562] (6448)	Time 0.185s	Speed 173.4 samples/s	Data 0.053s	Loss 0.75773	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.471	
+2023-05-26 01:04:23,546 Epoch: [4][300/1562] (6548)	Time 0.166s	Speed 192.3 samples/s	Data 0.036s	Loss 0.75979	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.242	
+2023-05-26 01:04:36,340 Epoch: [4][400/1562] (6648)	Time 0.157s	Speed 204.0 samples/s	Data 0.027s	Loss 0.75883	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.174	
+2023-05-26 01:04:48,963 Epoch: [4][500/1562] (6748)	Time 0.151s	Speed 212.3 samples/s	Data 0.022s	Loss 0.75614	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.039	
+2023-05-26 01:05:01,709 Epoch: [4][600/1562] (6848)	Time 0.147s	Speed 217.9 samples/s	Data 0.018s	Loss 0.75545	Jac (gamma) 0.0000 (0.0000)	Acc@1 73.970	
+2023-05-26 01:05:14,050 Epoch: [4][700/1562] (6948)	Time 0.144s	Speed 223.0 samples/s	Data 0.015s	Loss 0.74960	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.211	
+2023-05-26 01:05:26,837 Epoch: [4][800/1562] (7048)	Time 0.142s	Speed 226.1 samples/s	Data 0.014s	Loss 0.74801	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.239	
+2023-05-26 01:05:39,492 Epoch: [4][900/1562] (7148)	Time 0.140s	Speed 228.8 samples/s	Data 0.012s	Loss 0.74382	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.268	
+2023-05-26 01:05:52,249 Epoch: [4][1000/1562] (7248)	Time 0.139s	Speed 230.8 samples/s	Data 0.011s	Loss 0.74365	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.232	
+2023-05-26 01:06:05,151 Epoch: [4][1100/1562] (7348)	Time 0.138s	Speed 232.2 samples/s	Data 0.010s	Loss 0.74135	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.353	
+2023-05-26 01:06:17,767 Epoch: [4][1200/1562] (7448)	Time 0.137s	Speed 233.9 samples/s	Data 0.009s	Loss 0.73999	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.352	
+2023-05-26 01:06:30,907 Epoch: [4][1300/1562] (7548)	Time 0.136s	Speed 234.6 samples/s	Data 0.009s	Loss 0.73696	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.455	
+2023-05-26 01:06:43,670 Epoch: [4][1400/1562] (7648)	Time 0.136s	Speed 235.7 samples/s	Data 0.008s	Loss 0.73203	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.614	
+2023-05-26 01:06:56,330 Epoch: [4][1500/1562] (7748)	Time 0.135s	Speed 236.8 samples/s	Data 0.007s	Loss 0.72956	Jac (gamma) 0.0000 (0.0000)	Acc@1 74.671	
+2023-05-26 01:07:27,195 Test: Time 0.067	Loss 0.6819	Acc@1 76.052	
+2023-05-26 01:07:27,198 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:07:37,490 Epoch: [5][0/1562] (7810)	Time 9.903s	Speed 3.2 samples/s	Data 9.767s	Loss 0.52946	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.250	
+2023-05-26 01:07:50,372 Epoch: [5][100/1562] (7910)	Time 0.226s	Speed 141.9 samples/s	Data 0.097s	Loss 0.67384	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.392	
+2023-05-26 01:08:03,769 Epoch: [5][200/1562] (8010)	Time 0.180s	Speed 177.8 samples/s	Data 0.049s	Loss 0.67109	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.524	
+2023-05-26 01:08:16,802 Epoch: [5][300/1562] (8110)	Time 0.164s	Speed 195.7 samples/s	Data 0.033s	Loss 0.67161	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.474	
+2023-05-26 01:08:29,817 Epoch: [5][400/1562] (8210)	Time 0.155s	Speed 206.2 samples/s	Data 0.025s	Loss 0.67428	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.309	
+2023-05-26 01:08:42,720 Epoch: [5][500/1562] (8310)	Time 0.150s	Speed 213.4 samples/s	Data 0.020s	Loss 0.67561	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.079	
+2023-05-26 01:08:55,863 Epoch: [5][600/1562] (8410)	Time 0.147s	Speed 217.9 samples/s	Data 0.017s	Loss 0.67305	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.154	
+2023-05-26 01:09:08,810 Epoch: [5][700/1562] (8510)	Time 0.144s	Speed 221.6 samples/s	Data 0.014s	Loss 0.66821	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.373	
+2023-05-26 01:09:21,771 Epoch: [5][800/1562] (8610)	Time 0.143s	Speed 224.5 samples/s	Data 0.013s	Loss 0.66809	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.385	
+2023-05-26 01:09:34,534 Epoch: [5][900/1562] (8710)	Time 0.141s	Speed 227.1 samples/s	Data 0.011s	Loss 0.66493	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.533	
+2023-05-26 01:09:47,439 Epoch: [5][1000/1562] (8810)	Time 0.140s	Speed 229.0 samples/s	Data 0.010s	Loss 0.66390	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.552	
+2023-05-26 01:10:00,199 Epoch: [5][1100/1562] (8910)	Time 0.139s	Speed 230.9 samples/s	Data 0.009s	Loss 0.66297	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.581	
+2023-05-26 01:10:12,749 Epoch: [5][1200/1562] (9010)	Time 0.138s	Speed 232.7 samples/s	Data 0.009s	Loss 0.66259	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.631	
+2023-05-26 01:10:25,227 Epoch: [5][1300/1562] (9110)	Time 0.137s	Speed 234.4 samples/s	Data 0.008s	Loss 0.66131	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.686	
+2023-05-26 01:10:37,792 Epoch: [5][1400/1562] (9210)	Time 0.136s	Speed 235.7 samples/s	Data 0.007s	Loss 0.65893	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.755	
+2023-05-26 01:10:51,134 Epoch: [5][1500/1562] (9310)	Time 0.136s	Speed 236.0 samples/s	Data 0.007s	Loss 0.65814	Jac (gamma) 0.0000 (0.0000)	Acc@1 76.801	
+2023-05-26 01:11:22,509 Test: Time 0.068	Loss 0.6535	Acc@1 77.804	
+2023-05-26 01:11:22,513 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:11:33,399 Epoch: [6][0/1562] (9372)	Time 10.437s	Speed 3.1 samples/s	Data 10.295s	Loss 0.81266	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.250	
+2023-05-26 01:11:46,364 Epoch: [6][100/1562] (9472)	Time 0.232s	Speed 138.1 samples/s	Data 0.102s	Loss 0.62777	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.806	
+2023-05-26 01:11:59,179 Epoch: [6][200/1562] (9572)	Time 0.180s	Speed 177.6 samples/s	Data 0.052s	Loss 0.62784	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.545	
+2023-05-26 01:12:12,137 Epoch: [6][300/1562] (9672)	Time 0.163s	Speed 195.9 samples/s	Data 0.035s	Loss 0.61740	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.665	
+2023-05-26 01:12:25,081 Epoch: [6][400/1562] (9772)	Time 0.155s	Speed 206.6 samples/s	Data 0.026s	Loss 0.61913	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.507	
+2023-05-26 01:12:38,289 Epoch: [6][500/1562] (9872)	Time 0.150s	Speed 212.8 samples/s	Data 0.021s	Loss 0.61868	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.587	
+2023-05-26 01:12:50,934 Epoch: [6][600/1562] (9972)	Time 0.146s	Speed 218.6 samples/s	Data 0.018s	Loss 0.61658	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.562	
+2023-05-26 01:13:03,634 Epoch: [6][700/1562] (10072)	Time 0.144s	Speed 222.8 samples/s	Data 0.015s	Loss 0.61539	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.580	
+2023-05-26 01:13:16,730 Epoch: [6][800/1562] (10172)	Time 0.142s	Speed 225.3 samples/s	Data 0.013s	Loss 0.61058	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.777	
+2023-05-26 01:13:29,550 Epoch: [6][900/1562] (10272)	Time 0.140s	Speed 227.8 samples/s	Data 0.012s	Loss 0.60943	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.787	
+2023-05-26 01:13:42,294 Epoch: [6][1000/1562] (10372)	Time 0.139s	Speed 229.9 samples/s	Data 0.011s	Loss 0.60925	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.737	
+2023-05-26 01:13:55,366 Epoch: [6][1100/1562] (10472)	Time 0.138s	Speed 231.2 samples/s	Data 0.010s	Loss 0.60869	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.778	
+2023-05-26 01:14:08,206 Epoch: [6][1200/1562] (10572)	Time 0.138s	Speed 232.6 samples/s	Data 0.009s	Loss 0.60567	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.906	
+2023-05-26 01:14:21,386 Epoch: [6][1300/1562] (10672)	Time 0.137s	Speed 233.3 samples/s	Data 0.008s	Loss 0.60609	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.942	
+2023-05-26 01:14:33,996 Epoch: [6][1400/1562] (10772)	Time 0.136s	Speed 234.7 samples/s	Data 0.008s	Loss 0.60555	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.975	
+2023-05-26 01:14:46,614 Epoch: [6][1500/1562] (10872)	Time 0.136s	Speed 235.9 samples/s	Data 0.007s	Loss 0.60558	Jac (gamma) 0.0000 (0.0000)	Acc@1 79.010	
+2023-05-26 01:15:19,128 Test: Time 0.069	Loss 0.5832	Acc@1 79.567	
+2023-05-26 01:15:19,131 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:15:29,943 Epoch: [7][0/1562] (10934)	Time 10.421s	Speed 3.1 samples/s	Data 10.290s	Loss 0.56337	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.125	
+2023-05-26 01:15:42,807 Epoch: [7][100/1562] (11034)	Time 0.231s	Speed 138.8 samples/s	Data 0.102s	Loss 0.55681	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.353	
+2023-05-26 01:15:56,109 Epoch: [7][200/1562] (11134)	Time 0.182s	Speed 175.8 samples/s	Data 0.052s	Loss 0.56965	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.146	
+2023-05-26 01:16:09,137 Epoch: [7][300/1562] (11234)	Time 0.165s	Speed 194.1 samples/s	Data 0.035s	Loss 0.57170	Jac (gamma) 0.0000 (0.0000)	Acc@1 79.911	
+2023-05-26 01:16:21,881 Epoch: [7][400/1562] (11334)	Time 0.156s	Speed 205.8 samples/s	Data 0.026s	Loss 0.56952	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.136	
+2023-05-26 01:16:34,635 Epoch: [7][500/1562] (11434)	Time 0.150s	Speed 213.4 samples/s	Data 0.021s	Loss 0.56721	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.190	
+2023-05-26 01:16:47,669 Epoch: [7][600/1562] (11534)	Time 0.147s	Speed 218.2 samples/s	Data 0.018s	Loss 0.56427	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.288	
+2023-05-26 01:17:00,461 Epoch: [7][700/1562] (11634)	Time 0.144s	Speed 222.2 samples/s	Data 0.015s	Loss 0.56443	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.314	
+2023-05-26 01:17:13,153 Epoch: [7][800/1562] (11734)	Time 0.142s	Speed 225.6 samples/s	Data 0.013s	Loss 0.56410	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.318	
+2023-05-26 01:17:25,868 Epoch: [7][900/1562] (11834)	Time 0.140s	Speed 228.2 samples/s	Data 0.012s	Loss 0.56348	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.317	
+2023-05-26 01:17:38,642 Epoch: [7][1000/1562] (11934)	Time 0.139s	Speed 230.3 samples/s	Data 0.011s	Loss 0.56230	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.398	
+2023-05-26 01:17:51,383 Epoch: [7][1100/1562] (12034)	Time 0.138s	Speed 232.0 samples/s	Data 0.010s	Loss 0.56150	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.430	
+2023-05-26 01:18:04,240 Epoch: [7][1200/1562] (12134)	Time 0.137s	Speed 233.3 samples/s	Data 0.009s	Loss 0.55980	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.558	
+2023-05-26 01:18:17,378 Epoch: [7][1300/1562] (12234)	Time 0.137s	Speed 234.1 samples/s	Data 0.008s	Loss 0.55956	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.599	
+2023-05-26 01:18:30,145 Epoch: [7][1400/1562] (12334)	Time 0.136s	Speed 235.2 samples/s	Data 0.008s	Loss 0.55815	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.650	
+2023-05-26 01:18:42,572 Epoch: [7][1500/1562] (12434)	Time 0.135s	Speed 236.6 samples/s	Data 0.007s	Loss 0.55866	Jac (gamma) 0.0000 (0.0000)	Acc@1 80.634	
+2023-05-26 01:19:13,030 Test: Time 0.065	Loss 0.6178	Acc@1 78.425	
+2023-05-26 01:19:13,033 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:19:23,802 Epoch: [8][0/1562] (12496)	Time 10.425s	Speed 3.1 samples/s	Data 10.282s	Loss 0.61151	Jac (gamma) 0.0000 (0.0000)	Acc@1 71.875	
+2023-05-26 01:19:36,647 Epoch: [8][100/1562] (12596)	Time 0.230s	Speed 138.9 samples/s	Data 0.102s	Loss 0.53332	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.374	
+2023-05-26 01:19:49,435 Epoch: [8][200/1562] (12696)	Time 0.179s	Speed 178.4 samples/s	Data 0.052s	Loss 0.52088	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.748	
+2023-05-26 01:20:02,228 Epoch: [8][300/1562] (12796)	Time 0.162s	Speed 197.2 samples/s	Data 0.035s	Loss 0.52080	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.873	
+2023-05-26 01:20:15,091 Epoch: [8][400/1562] (12896)	Time 0.154s	Speed 207.9 samples/s	Data 0.026s	Loss 0.52201	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.975	
+2023-05-26 01:20:27,799 Epoch: [8][500/1562] (12996)	Time 0.149s	Speed 215.4 samples/s	Data 0.021s	Loss 0.52750	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.824	
+2023-05-26 01:20:40,940 Epoch: [8][600/1562] (13096)	Time 0.146s	Speed 219.6 samples/s	Data 0.018s	Loss 0.52616	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.905	
+2023-05-26 01:20:53,169 Epoch: [8][700/1562] (13196)	Time 0.142s	Speed 224.8 samples/s	Data 0.015s	Loss 0.53203	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.598	
+2023-05-26 01:21:06,270 Epoch: [8][800/1562] (13296)	Time 0.141s	Speed 227.1 samples/s	Data 0.013s	Loss 0.52956	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.683	
+2023-05-26 01:21:19,327 Epoch: [8][900/1562] (13396)	Time 0.140s	Speed 228.9 samples/s	Data 0.012s	Loss 0.53072	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.701	
+2023-05-26 01:21:32,070 Epoch: [8][1000/1562] (13496)	Time 0.139s	Speed 231.0 samples/s	Data 0.011s	Loss 0.52900	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.853	
+2023-05-26 01:21:44,764 Epoch: [8][1100/1562] (13596)	Time 0.137s	Speed 232.7 samples/s	Data 0.010s	Loss 0.52858	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.891	
+2023-05-26 01:21:57,740 Epoch: [8][1200/1562] (13696)	Time 0.137s	Speed 233.8 samples/s	Data 0.009s	Loss 0.52761	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.921	
+2023-05-26 01:22:10,494 Epoch: [8][1300/1562] (13796)	Time 0.136s	Speed 235.1 samples/s	Data 0.008s	Loss 0.52567	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.956	
+2023-05-26 01:22:23,529 Epoch: [8][1400/1562] (13896)	Time 0.136s	Speed 235.8 samples/s	Data 0.008s	Loss 0.52224	Jac (gamma) 0.0000 (0.0000)	Acc@1 82.075	
+2023-05-26 01:22:36,413 Epoch: [8][1500/1562] (13996)	Time 0.135s	Speed 236.6 samples/s	Data 0.007s	Loss 0.52062	Jac (gamma) 0.0000 (0.0000)	Acc@1 82.131	
+2023-05-26 01:23:07,463 Test: Time 0.068	Loss 0.5433	Acc@1 80.929	
+2023-05-26 01:23:07,469 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:23:18,444 Epoch: [9][0/1562] (14058)	Time 10.530s	Speed 3.0 samples/s	Data 10.360s	Loss 0.60278	Jac (gamma) 0.0000 (0.0000)	Acc@1 78.125	
+2023-05-26 01:23:31,282 Epoch: [9][100/1562] (14158)	Time 0.231s	Speed 138.3 samples/s	Data 0.103s	Loss 0.47105	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.694	
+2023-05-26 01:23:44,416 Epoch: [9][200/1562] (14258)	Time 0.182s	Speed 176.2 samples/s	Data 0.052s	Loss 0.47280	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.442	
+2023-05-26 01:23:57,701 Epoch: [9][300/1562] (14358)	Time 0.165s	Speed 193.5 samples/s	Data 0.035s	Loss 0.47685	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.524	
+2023-05-26 01:24:10,417 Epoch: [9][400/1562] (14458)	Time 0.156s	Speed 205.3 samples/s	Data 0.026s	Loss 0.47737	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.377	
+2023-05-26 01:24:23,539 Epoch: [9][500/1562] (14558)	Time 0.151s	Speed 212.0 samples/s	Data 0.021s	Loss 0.48198	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.277	
+2023-05-26 01:24:36,508 Epoch: [9][600/1562] (14658)	Time 0.147s	Speed 217.1 samples/s	Data 0.018s	Loss 0.48320	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.340	
+2023-05-26 01:24:48,871 Epoch: [9][700/1562] (14758)	Time 0.144s	Speed 222.2 samples/s	Data 0.015s	Loss 0.48435	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.252	
+2023-05-26 01:25:01,249 Epoch: [9][800/1562] (14858)	Time 0.141s	Speed 226.2 samples/s	Data 0.013s	Loss 0.48545	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.099	
+2023-05-26 01:25:14,235 Epoch: [9][900/1562] (14958)	Time 0.140s	Speed 228.2 samples/s	Data 0.012s	Loss 0.48331	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.168	
+2023-05-26 01:25:27,430 Epoch: [9][1000/1562] (15058)	Time 0.139s	Speed 229.6 samples/s	Data 0.011s	Loss 0.48433	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.148	
+2023-05-26 01:25:40,999 Epoch: [9][1100/1562] (15158)	Time 0.139s	Speed 230.2 samples/s	Data 0.010s	Loss 0.48516	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.112	
+2023-05-26 01:25:54,019 Epoch: [9][1200/1562] (15258)	Time 0.138s	Speed 231.4 samples/s	Data 0.009s	Loss 0.48450	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.095	
+2023-05-26 01:26:06,943 Epoch: [9][1300/1562] (15358)	Time 0.138s	Speed 232.5 samples/s	Data 0.008s	Loss 0.48640	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.044	
+2023-05-26 01:26:19,745 Epoch: [9][1400/1562] (15458)	Time 0.137s	Speed 233.7 samples/s	Data 0.008s	Loss 0.48606	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.048	
+2023-05-26 01:26:32,027 Epoch: [9][1500/1562] (15558)	Time 0.136s	Speed 235.3 samples/s	Data 0.007s	Loss 0.48621	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.040	
+2023-05-26 01:27:03,468 Test: Time 0.068	Loss 0.5229	Acc@1 82.192	
+2023-05-26 01:27:03,471 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:27:14,553 Epoch: [10][0/1562] (15620)	Time 10.617s	Speed 3.0 samples/s	Data 10.470s	Loss 0.18646	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 01:27:27,346 Epoch: [10][100/1562] (15720)	Time 0.232s	Speed 138.1 samples/s	Data 0.104s	Loss 0.45653	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.282	
+2023-05-26 01:27:40,525 Epoch: [10][200/1562] (15820)	Time 0.182s	Speed 175.8 samples/s	Data 0.053s	Loss 0.44615	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.422	
+2023-05-26 01:27:53,344 Epoch: [10][300/1562] (15920)	Time 0.164s	Speed 195.0 samples/s	Data 0.035s	Loss 0.44713	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.323	
+2023-05-26 01:28:06,451 Epoch: [10][400/1562] (16020)	Time 0.156s	Speed 205.3 samples/s	Data 0.027s	Loss 0.44579	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.141	
+2023-05-26 01:28:20,599 Epoch: [10][500/1562] (16120)	Time 0.153s	Speed 209.1 samples/s	Data 0.021s	Loss 0.45179	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.051	
+2023-05-26 01:28:34,792 Epoch: [10][600/1562] (16220)	Time 0.151s	Speed 211.7 samples/s	Data 0.018s	Loss 0.45275	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.949	
+2023-05-26 01:28:48,765 Epoch: [10][700/1562] (16320)	Time 0.150s	Speed 214.0 samples/s	Data 0.015s	Loss 0.45267	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.965	
+2023-05-26 01:29:03,135 Epoch: [10][800/1562] (16420)	Time 0.149s	Speed 215.0 samples/s	Data 0.013s	Loss 0.45317	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.004	
+2023-05-26 01:29:17,696 Epoch: [10][900/1562] (16520)	Time 0.148s	Speed 215.6 samples/s	Data 0.012s	Loss 0.45537	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.886	
+2023-05-26 01:29:32,421 Epoch: [10][1000/1562] (16620)	Time 0.148s	Speed 215.7 samples/s	Data 0.011s	Loss 0.45464	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.975	
+2023-05-26 01:29:47,008 Epoch: [10][1100/1562] (16720)	Time 0.148s	Speed 216.1 samples/s	Data 0.010s	Loss 0.45422	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.017	
+2023-05-26 01:30:01,767 Epoch: [10][1200/1562] (16820)	Time 0.148s	Speed 216.1 samples/s	Data 0.009s	Loss 0.45761	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.862	
+2023-05-26 01:30:16,172 Epoch: [10][1300/1562] (16920)	Time 0.148s	Speed 216.6 samples/s	Data 0.008s	Loss 0.45786	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.938	
+2023-05-26 01:30:30,605 Epoch: [10][1400/1562] (17020)	Time 0.148s	Speed 216.9 samples/s	Data 0.008s	Loss 0.45724	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.936	
+2023-05-26 01:30:44,930 Epoch: [10][1500/1562] (17120)	Time 0.147s	Speed 217.4 samples/s	Data 0.007s	Loss 0.45595	Jac (gamma) 0.0000 (0.0000)	Acc@1 83.977	
+2023-05-26 01:31:20,980 Test: Time 0.080	Loss 0.4993	Acc@1 83.113	
+2023-05-26 01:31:20,983 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:31:32,042 Epoch: [11][0/1562] (17182)	Time 10.633s	Speed 3.0 samples/s	Data 10.505s	Loss 0.47675	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.500	
+2023-05-26 01:31:46,625 Epoch: [11][100/1562] (17282)	Time 0.250s	Speed 128.2 samples/s	Data 0.105s	Loss 0.42423	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.149	
+2023-05-26 01:32:00,879 Epoch: [11][200/1562] (17382)	Time 0.196s	Speed 163.0 samples/s	Data 0.053s	Loss 0.42255	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.981	
+2023-05-26 01:32:14,639 Epoch: [11][300/1562] (17482)	Time 0.177s	Speed 181.0 samples/s	Data 0.035s	Loss 0.42819	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.759	
+2023-05-26 01:32:28,671 Epoch: [11][400/1562] (17582)	Time 0.168s	Speed 190.8 samples/s	Data 0.027s	Loss 0.43112	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.827	
+2023-05-26 01:32:41,085 Epoch: [11][500/1562] (17682)	Time 0.159s	Speed 201.2 samples/s	Data 0.021s	Loss 0.43466	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.637	
+2023-05-26 01:32:52,530 Epoch: [11][600/1562] (17782)	Time 0.152s	Speed 211.1 samples/s	Data 0.018s	Loss 0.43464	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.749	
+2023-05-26 01:33:04,223 Epoch: [11][700/1562] (17882)	Time 0.147s	Speed 218.2 samples/s	Data 0.015s	Loss 0.43333	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.897	
+2023-05-26 01:33:16,097 Epoch: [11][800/1562] (17982)	Time 0.143s	Speed 223.5 samples/s	Data 0.014s	Loss 0.43458	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.804	
+2023-05-26 01:33:27,730 Epoch: [11][900/1562] (18082)	Time 0.140s	Speed 228.2 samples/s	Data 0.012s	Loss 0.43230	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.951	
+2023-05-26 01:33:39,545 Epoch: [11][1000/1562] (18182)	Time 0.138s	Speed 231.9 samples/s	Data 0.011s	Loss 0.43196	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.965	
+2023-05-26 01:33:51,414 Epoch: [11][1100/1562] (18282)	Time 0.136s	Speed 234.9 samples/s	Data 0.010s	Loss 0.43179	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.985	
+2023-05-26 01:34:03,401 Epoch: [11][1200/1562] (18382)	Time 0.135s	Speed 237.3 samples/s	Data 0.009s	Loss 0.43185	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.036	
+2023-05-26 01:34:15,473 Epoch: [11][1300/1562] (18482)	Time 0.134s	Speed 239.2 samples/s	Data 0.008s	Loss 0.43150	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.036	
+2023-05-26 01:34:27,633 Epoch: [11][1400/1562] (18582)	Time 0.133s	Speed 240.7 samples/s	Data 0.008s	Loss 0.43135	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.055	
+2023-05-26 01:34:39,630 Epoch: [11][1500/1562] (18682)	Time 0.132s	Speed 242.3 samples/s	Data 0.007s	Loss 0.43102	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.104	
+2023-05-26 01:35:10,268 Test: Time 0.071	Loss 0.4829	Acc@1 83.684	
+2023-05-26 01:35:10,271 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:35:19,974 Epoch: [12][0/1562] (18744)	Time 9.326s	Speed 3.4 samples/s	Data 9.173s	Loss 0.28911	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.500	
+2023-05-26 01:35:31,967 Epoch: [12][100/1562] (18844)	Time 0.211s	Speed 151.6 samples/s	Data 0.091s	Loss 0.40605	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.705	
+2023-05-26 01:35:44,505 Epoch: [12][200/1562] (18944)	Time 0.168s	Speed 190.0 samples/s	Data 0.046s	Loss 0.41485	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.323	
+2023-05-26 01:35:55,925 Epoch: [12][300/1562] (19044)	Time 0.150s	Speed 212.7 samples/s	Data 0.031s	Loss 0.40827	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.486	
+2023-05-26 01:36:08,508 Epoch: [12][400/1562] (19144)	Time 0.144s	Speed 221.8 samples/s	Data 0.023s	Loss 0.40891	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.708	
+2023-05-26 01:36:19,913 Epoch: [12][500/1562] (19244)	Time 0.138s	Speed 231.5 samples/s	Data 0.019s	Loss 0.40805	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.785	
+2023-05-26 01:36:32,303 Epoch: [12][600/1562] (19344)	Time 0.136s	Speed 235.5 samples/s	Data 0.016s	Loss 0.40899	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.696	
+2023-05-26 01:36:44,093 Epoch: [12][700/1562] (19444)	Time 0.133s	Speed 240.1 samples/s	Data 0.013s	Loss 0.40893	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.766	
+2023-05-26 01:36:55,391 Epoch: [12][800/1562] (19544)	Time 0.131s	Speed 244.7 samples/s	Data 0.012s	Loss 0.40840	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.807	
+2023-05-26 01:37:07,386 Epoch: [12][900/1562] (19644)	Time 0.130s	Speed 247.0 samples/s	Data 0.011s	Loss 0.40724	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.797	
+2023-05-26 01:37:18,836 Epoch: [12][1000/1562] (19744)	Time 0.128s	Speed 249.9 samples/s	Data 0.009s	Loss 0.40877	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.780	
+2023-05-26 01:37:29,971 Epoch: [12][1100/1562] (19844)	Time 0.127s	Speed 252.9 samples/s	Data 0.009s	Loss 0.40830	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.754	
+2023-05-26 01:37:42,137 Epoch: [12][1200/1562] (19944)	Time 0.126s	Speed 253.7 samples/s	Data 0.008s	Loss 0.40836	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.777	
+2023-05-26 01:37:54,202 Epoch: [12][1300/1562] (20044)	Time 0.126s	Speed 254.6 samples/s	Data 0.007s	Loss 0.40679	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.862	
+2023-05-26 01:38:05,762 Epoch: [12][1400/1562] (20144)	Time 0.125s	Speed 256.0 samples/s	Data 0.007s	Loss 0.40820	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.838	
+2023-05-26 01:38:17,154 Epoch: [12][1500/1562] (20244)	Time 0.124s	Speed 257.5 samples/s	Data 0.006s	Loss 0.40675	Jac (gamma) 0.0000 (0.0000)	Acc@1 85.874	
+2023-05-26 01:38:48,324 Test: Time 0.070	Loss 0.4577	Acc@1 84.195	
+2023-05-26 01:38:48,330 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:38:57,986 Epoch: [13][0/1562] (20306)	Time 9.240s	Speed 3.5 samples/s	Data 9.076s	Loss 0.37316	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.375	
+2023-05-26 01:39:09,697 Epoch: [13][100/1562] (20406)	Time 0.207s	Speed 154.3 samples/s	Data 0.090s	Loss 0.36205	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.098	
+2023-05-26 01:39:21,330 Epoch: [13][200/1562] (20506)	Time 0.162s	Speed 197.4 samples/s	Data 0.045s	Loss 0.37092	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.174	
+2023-05-26 01:39:33,173 Epoch: [13][300/1562] (20606)	Time 0.148s	Speed 216.8 samples/s	Data 0.030s	Loss 0.36735	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.240	
+2023-05-26 01:39:44,778 Epoch: [13][400/1562] (20706)	Time 0.140s	Speed 229.0 samples/s	Data 0.023s	Loss 0.37168	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.212	
+2023-05-26 01:39:56,727 Epoch: [13][500/1562] (20806)	Time 0.136s	Speed 235.8 samples/s	Data 0.018s	Loss 0.37264	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.144	
+2023-05-26 01:40:08,604 Epoch: [13][600/1562] (20906)	Time 0.133s	Speed 240.8 samples/s	Data 0.015s	Loss 0.37260	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.240	
+2023-05-26 01:40:20,320 Epoch: [13][700/1562] (21006)	Time 0.131s	Speed 245.0 samples/s	Data 0.013s	Loss 0.37560	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.059	
+2023-05-26 01:40:31,908 Epoch: [13][800/1562] (21106)	Time 0.129s	Speed 248.5 samples/s	Data 0.012s	Loss 0.37858	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.950	
+2023-05-26 01:40:43,935 Epoch: [13][900/1562] (21206)	Time 0.128s	Speed 250.3 samples/s	Data 0.010s	Loss 0.37862	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.897	
+2023-05-26 01:40:55,111 Epoch: [13][1000/1562] (21306)	Time 0.126s	Speed 253.5 samples/s	Data 0.009s	Loss 0.37785	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.944	
+2023-05-26 01:41:06,459 Epoch: [13][1100/1562] (21406)	Time 0.125s	Speed 255.8 samples/s	Data 0.009s	Loss 0.37916	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.884	
+2023-05-26 01:41:17,931 Epoch: [13][1200/1562] (21506)	Time 0.124s	Speed 257.6 samples/s	Data 0.008s	Loss 0.38239	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.782	
+2023-05-26 01:41:29,303 Epoch: [13][1300/1562] (21606)	Time 0.123s	Speed 259.3 samples/s	Data 0.007s	Loss 0.38100	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.842	
+2023-05-26 01:41:40,665 Epoch: [13][1400/1562] (21706)	Time 0.123s	Speed 260.8 samples/s	Data 0.007s	Loss 0.38254	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.797	
+2023-05-26 01:41:52,115 Epoch: [13][1500/1562] (21806)	Time 0.122s	Speed 261.9 samples/s	Data 0.006s	Loss 0.38258	Jac (gamma) 0.0000 (0.0000)	Acc@1 86.809	
+2023-05-26 01:42:23,416 Test: Time 0.071	Loss 0.4104	Acc@1 86.278	
+2023-05-26 01:42:23,419 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:42:33,368 Epoch: [14][0/1562] (21868)	Time 9.561s	Speed 3.3 samples/s	Data 9.417s	Loss 0.20093	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 01:42:44,768 Epoch: [14][100/1562] (21968)	Time 0.208s	Speed 154.2 samples/s	Data 0.094s	Loss 0.36240	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.252	
+2023-05-26 01:42:56,502 Epoch: [14][200/1562] (22068)	Time 0.163s	Speed 196.7 samples/s	Data 0.047s	Loss 0.36271	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.065	
+2023-05-26 01:43:07,833 Epoch: [14][300/1562] (22168)	Time 0.146s	Speed 218.8 samples/s	Data 0.032s	Loss 0.36196	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.074	
+2023-05-26 01:43:19,477 Epoch: [14][400/1562] (22268)	Time 0.139s	Speed 230.5 samples/s	Data 0.024s	Loss 0.35955	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.227	
+2023-05-26 01:43:31,082 Epoch: [14][500/1562] (22368)	Time 0.134s	Speed 238.3 samples/s	Data 0.019s	Loss 0.36223	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.219	
+2023-05-26 01:43:43,004 Epoch: [14][600/1562] (22468)	Time 0.132s	Speed 242.8 samples/s	Data 0.016s	Loss 0.36529	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.188	
+2023-05-26 01:43:54,836 Epoch: [14][700/1562] (22568)	Time 0.130s	Speed 246.4 samples/s	Data 0.014s	Loss 0.36704	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.157	
+2023-05-26 01:44:06,898 Epoch: [14][800/1562] (22668)	Time 0.129s	Speed 248.6 samples/s	Data 0.012s	Loss 0.36382	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.305	
+2023-05-26 01:44:18,741 Epoch: [14][900/1562] (22768)	Time 0.128s	Speed 250.9 samples/s	Data 0.011s	Loss 0.36177	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.344	
+2023-05-26 01:44:29,923 Epoch: [14][1000/1562] (22868)	Time 0.126s	Speed 254.0 samples/s	Data 0.010s	Loss 0.36257	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.360	
+2023-05-26 01:44:41,309 Epoch: [14][1100/1562] (22968)	Time 0.125s	Speed 256.2 samples/s	Data 0.009s	Loss 0.36563	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.279	
+2023-05-26 01:44:52,890 Epoch: [14][1200/1562] (23068)	Time 0.124s	Speed 257.8 samples/s	Data 0.008s	Loss 0.36429	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.349	
+2023-05-26 01:45:04,355 Epoch: [14][1300/1562] (23168)	Time 0.123s	Speed 259.3 samples/s	Data 0.008s	Loss 0.36413	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.363	
+2023-05-26 01:45:16,003 Epoch: [14][1400/1562] (23268)	Time 0.123s	Speed 260.4 samples/s	Data 0.007s	Loss 0.36442	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.364	
+2023-05-26 01:45:27,784 Epoch: [14][1500/1562] (23368)	Time 0.123s	Speed 261.1 samples/s	Data 0.007s	Loss 0.36409	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.379	
+2023-05-26 01:45:59,846 Test: Time 0.073	Loss 0.4038	Acc@1 86.478	
+2023-05-26 01:45:59,850 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:46:09,848 Epoch: [15][0/1562] (23430)	Time 9.577s	Speed 3.3 samples/s	Data 9.427s	Loss 0.36567	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.375	
+2023-05-26 01:46:21,315 Epoch: [15][100/1562] (23530)	Time 0.208s	Speed 153.6 samples/s	Data 0.094s	Loss 0.34519	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.655	
+2023-05-26 01:46:33,204 Epoch: [15][200/1562] (23630)	Time 0.164s	Speed 195.3 samples/s	Data 0.047s	Loss 0.34174	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.998	
+2023-05-26 01:46:44,559 Epoch: [15][300/1562] (23730)	Time 0.147s	Speed 217.5 samples/s	Data 0.032s	Loss 0.34665	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.822	
+2023-05-26 01:46:56,807 Epoch: [15][400/1562] (23830)	Time 0.141s	Speed 227.0 samples/s	Data 0.024s	Loss 0.34469	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.014	
+2023-05-26 01:47:08,584 Epoch: [15][500/1562] (23930)	Time 0.136s	Speed 234.7 samples/s	Data 0.019s	Loss 0.35288	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.756	
+2023-05-26 01:47:19,836 Epoch: [15][600/1562] (24030)	Time 0.132s	Speed 241.7 samples/s	Data 0.016s	Loss 0.35216	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.817	
+2023-05-26 01:47:31,323 Epoch: [15][700/1562] (24130)	Time 0.130s	Speed 246.4 samples/s	Data 0.014s	Loss 0.34830	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.892	
+2023-05-26 01:47:42,880 Epoch: [15][800/1562] (24230)	Time 0.128s	Speed 249.8 samples/s	Data 0.012s	Loss 0.34918	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.781	
+2023-05-26 01:47:55,283 Epoch: [15][900/1562] (24330)	Time 0.128s	Speed 250.7 samples/s	Data 0.011s	Loss 0.35197	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.705	
+2023-05-26 01:48:07,636 Epoch: [15][1000/1562] (24430)	Time 0.127s	Speed 251.5 samples/s	Data 0.010s	Loss 0.35095	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.765	
+2023-05-26 01:48:19,411 Epoch: [15][1100/1562] (24530)	Time 0.126s	Speed 253.2 samples/s	Data 0.009s	Loss 0.34716	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.906	
+2023-05-26 01:48:31,346 Epoch: [15][1200/1562] (24630)	Time 0.126s	Speed 254.4 samples/s	Data 0.008s	Loss 0.34833	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.885	
+2023-05-26 01:48:43,425 Epoch: [15][1300/1562] (24730)	Time 0.125s	Speed 255.2 samples/s	Data 0.008s	Loss 0.34763	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.920	
+2023-05-26 01:48:54,869 Epoch: [15][1400/1562] (24830)	Time 0.125s	Speed 256.8 samples/s	Data 0.007s	Loss 0.34616	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.977	
+2023-05-26 01:49:05,954 Epoch: [15][1500/1562] (24930)	Time 0.124s	Speed 258.7 samples/s	Data 0.007s	Loss 0.34532	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.991	
+2023-05-26 01:49:37,225 Test: Time 0.071	Loss 0.4310	Acc@1 85.306	
+2023-05-26 01:49:37,232 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:49:47,270 Epoch: [16][0/1562] (24992)	Time 9.721s	Speed 3.3 samples/s	Data 9.578s	Loss 0.47532	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.375	
+2023-05-26 01:49:58,908 Epoch: [16][100/1562] (25092)	Time 0.211s	Speed 151.3 samples/s	Data 0.095s	Loss 0.32237	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.026	
+2023-05-26 01:50:11,114 Epoch: [16][200/1562] (25192)	Time 0.167s	Speed 191.6 samples/s	Data 0.048s	Loss 0.32784	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.044	
+2023-05-26 01:50:22,797 Epoch: [16][300/1562] (25292)	Time 0.150s	Speed 212.9 samples/s	Data 0.032s	Loss 0.32463	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.445	
+2023-05-26 01:50:34,303 Epoch: [16][400/1562] (25392)	Time 0.142s	Speed 226.1 samples/s	Data 0.024s	Loss 0.32685	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.466	
+2023-05-26 01:50:46,793 Epoch: [16][500/1562] (25492)	Time 0.138s	Speed 231.5 samples/s	Data 0.019s	Loss 0.32822	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.404	
+2023-05-26 01:50:58,489 Epoch: [16][600/1562] (25592)	Time 0.135s	Speed 237.6 samples/s	Data 0.016s	Loss 0.32513	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.561	
+2023-05-26 01:51:10,765 Epoch: [16][700/1562] (25692)	Time 0.133s	Speed 240.6 samples/s	Data 0.014s	Loss 0.32235	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.628	
+2023-05-26 01:51:22,175 Epoch: [16][800/1562] (25792)	Time 0.131s	Speed 245.0 samples/s	Data 0.012s	Loss 0.32371	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.608	
+2023-05-26 01:51:34,333 Epoch: [16][900/1562] (25892)	Time 0.130s	Speed 246.9 samples/s	Data 0.011s	Loss 0.32237	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.700	
+2023-05-26 01:51:45,988 Epoch: [16][1000/1562] (25992)	Time 0.128s	Speed 249.4 samples/s	Data 0.010s	Loss 0.32299	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.739	
+2023-05-26 01:51:57,653 Epoch: [16][1100/1562] (26092)	Time 0.127s	Speed 251.5 samples/s	Data 0.009s	Loss 0.32267	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.732	
+2023-05-26 01:52:08,991 Epoch: [16][1200/1562] (26192)	Time 0.126s	Speed 253.8 samples/s	Data 0.008s	Loss 0.32319	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.679	
+2023-05-26 01:52:20,551 Epoch: [16][1300/1562] (26292)	Time 0.125s	Speed 255.4 samples/s	Data 0.008s	Loss 0.32324	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.744	
+2023-05-26 01:52:31,637 Epoch: [16][1400/1562] (26392)	Time 0.124s	Speed 257.5 samples/s	Data 0.007s	Loss 0.32259	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.787	
+2023-05-26 01:52:43,971 Epoch: [16][1500/1562] (26492)	Time 0.124s	Speed 257.7 samples/s	Data 0.007s	Loss 0.32257	Jac (gamma) 0.0000 (0.0000)	Acc@1 88.803	
+2023-05-26 01:53:15,652 Test: Time 0.071	Loss 0.3663	Acc@1 87.710	
+2023-05-26 01:53:15,658 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:53:25,531 Epoch: [17][0/1562] (26554)	Time 9.499s	Speed 3.4 samples/s	Data 9.366s	Loss 0.22021	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.625	
+2023-05-26 01:53:37,379 Epoch: [17][100/1562] (26654)	Time 0.211s	Speed 151.4 samples/s	Data 0.093s	Loss 0.30717	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.635	
+2023-05-26 01:53:48,771 Epoch: [17][200/1562] (26754)	Time 0.163s	Speed 196.5 samples/s	Data 0.047s	Loss 0.30165	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.661	
+2023-05-26 01:54:00,076 Epoch: [17][300/1562] (26854)	Time 0.146s	Speed 218.7 samples/s	Data 0.031s	Loss 0.30809	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.369	
+2023-05-26 01:54:11,707 Epoch: [17][400/1562] (26954)	Time 0.139s	Speed 230.5 samples/s	Data 0.024s	Loss 0.31026	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.417	
+2023-05-26 01:54:23,618 Epoch: [17][500/1562] (27054)	Time 0.135s	Speed 237.2 samples/s	Data 0.019s	Loss 0.31072	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.321	
+2023-05-26 01:54:35,631 Epoch: [17][600/1562] (27154)	Time 0.132s	Speed 241.6 samples/s	Data 0.016s	Loss 0.30587	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.486	
+2023-05-26 01:54:47,137 Epoch: [17][700/1562] (27254)	Time 0.130s	Speed 246.2 samples/s	Data 0.014s	Loss 0.30601	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.448	
+2023-05-26 01:54:58,863 Epoch: [17][800/1562] (27354)	Time 0.128s	Speed 249.3 samples/s	Data 0.012s	Loss 0.30503	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.431	
+2023-05-26 01:55:10,375 Epoch: [17][900/1562] (27454)	Time 0.127s	Speed 252.2 samples/s	Data 0.011s	Loss 0.30579	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.415	
+2023-05-26 01:55:22,521 Epoch: [17][1000/1562] (27554)	Time 0.126s	Speed 253.2 samples/s	Data 0.010s	Loss 0.30633	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.389	
+2023-05-26 01:55:33,717 Epoch: [17][1100/1562] (27654)	Time 0.125s	Speed 255.9 samples/s	Data 0.009s	Loss 0.30694	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.319	
+2023-05-26 01:55:45,430 Epoch: [17][1200/1562] (27754)	Time 0.124s	Speed 257.3 samples/s	Data 0.008s	Loss 0.30625	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.371	
+2023-05-26 01:55:56,610 Epoch: [17][1300/1562] (27854)	Time 0.123s	Speed 259.3 samples/s	Data 0.008s	Loss 0.30635	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.376	
+2023-05-26 01:56:08,372 Epoch: [17][1400/1562] (27954)	Time 0.123s	Speed 260.1 samples/s	Data 0.007s	Loss 0.30690	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.300	
+2023-05-26 01:56:19,663 Epoch: [17][1500/1562] (28054)	Time 0.122s	Speed 261.6 samples/s	Data 0.007s	Loss 0.30661	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.309	
+2023-05-26 01:56:51,816 Test: Time 0.072	Loss 0.3785	Acc@1 87.600	
+2023-05-26 01:56:51,821 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 01:57:01,570 Epoch: [18][0/1562] (28116)	Time 9.451s	Speed 3.4 samples/s	Data 9.308s	Loss 0.13044	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 01:57:14,469 Epoch: [18][100/1562] (28216)	Time 0.221s	Speed 144.6 samples/s	Data 0.093s	Loss 0.25166	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.244	
+2023-05-26 01:57:26,090 Epoch: [18][200/1562] (28316)	Time 0.169s	Speed 189.3 samples/s	Data 0.047s	Loss 0.27153	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.299	
+2023-05-26 01:57:37,829 Epoch: [18][300/1562] (28416)	Time 0.152s	Speed 210.7 samples/s	Data 0.031s	Loss 0.27739	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.168	
+2023-05-26 01:57:49,474 Epoch: [18][400/1562] (28516)	Time 0.143s	Speed 223.7 samples/s	Data 0.024s	Loss 0.28910	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.885	
+2023-05-26 01:58:00,841 Epoch: [18][500/1562] (28616)	Time 0.137s	Speed 233.3 samples/s	Data 0.019s	Loss 0.29321	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.746	
+2023-05-26 01:58:12,751 Epoch: [18][600/1562] (28716)	Time 0.134s	Speed 238.5 samples/s	Data 0.016s	Loss 0.29029	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.840	
+2023-05-26 01:58:24,164 Epoch: [18][700/1562] (28816)	Time 0.131s	Speed 243.7 samples/s	Data 0.014s	Loss 0.29196	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.738	
+2023-05-26 01:58:35,822 Epoch: [18][800/1562] (28916)	Time 0.129s	Speed 247.2 samples/s	Data 0.012s	Loss 0.29026	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.802	
+2023-05-26 01:58:47,891 Epoch: [18][900/1562] (29016)	Time 0.128s	Speed 249.0 samples/s	Data 0.011s	Loss 0.29161	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.796	
+2023-05-26 01:58:59,198 Epoch: [18][1000/1562] (29116)	Time 0.127s	Speed 252.1 samples/s	Data 0.010s	Loss 0.29384	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.766	
+2023-05-26 01:59:10,578 Epoch: [18][1100/1562] (29216)	Time 0.126s	Speed 254.5 samples/s	Data 0.009s	Loss 0.29282	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.799	
+2023-05-26 01:59:21,884 Epoch: [18][1200/1562] (29316)	Time 0.125s	Speed 256.6 samples/s	Data 0.008s	Loss 0.29100	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.857	
+2023-05-26 01:59:33,391 Epoch: [18][1300/1562] (29416)	Time 0.124s	Speed 258.2 samples/s	Data 0.007s	Loss 0.29204	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.837	
+2023-05-26 01:59:45,357 Epoch: [18][1400/1562] (29516)	Time 0.124s	Speed 258.8 samples/s	Data 0.007s	Loss 0.29212	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.824	
+2023-05-26 01:59:57,128 Epoch: [18][1500/1562] (29616)	Time 0.123s	Speed 259.6 samples/s	Data 0.007s	Loss 0.29163	Jac (gamma) 0.0000 (0.0000)	Acc@1 89.846	
+2023-05-26 02:00:28,551 Test: Time 0.071	Loss 0.3810	Acc@1 87.149	
+2023-05-26 02:00:28,553 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:00:38,415 Epoch: [19][0/1562] (29678)	Time 9.564s	Speed 3.3 samples/s	Data 9.419s	Loss 0.40524	Jac (gamma) 0.0000 (0.0000)	Acc@1 84.375	
+2023-05-26 02:00:50,019 Epoch: [19][100/1562] (29778)	Time 0.210s	Speed 152.7 samples/s	Data 0.094s	Loss 0.27030	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.161	
+2023-05-26 02:01:01,843 Epoch: [19][200/1562] (29878)	Time 0.164s	Speed 195.0 samples/s	Data 0.047s	Loss 0.26969	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.563	
+2023-05-26 02:01:14,110 Epoch: [19][300/1562] (29978)	Time 0.150s	Speed 212.8 samples/s	Data 0.032s	Loss 0.27644	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.334	
+2023-05-26 02:01:26,009 Epoch: [19][400/1562] (30078)	Time 0.143s	Speed 224.5 samples/s	Data 0.024s	Loss 0.27698	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.337	
+2023-05-26 02:01:37,681 Epoch: [19][500/1562] (30178)	Time 0.137s	Speed 232.9 samples/s	Data 0.019s	Loss 0.27540	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.294	
+2023-05-26 02:01:49,156 Epoch: [19][600/1562] (30278)	Time 0.134s	Speed 239.5 samples/s	Data 0.016s	Loss 0.27425	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.443	
+2023-05-26 02:02:01,336 Epoch: [19][700/1562] (30378)	Time 0.132s	Speed 242.6 samples/s	Data 0.014s	Loss 0.27454	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.384	
+2023-05-26 02:02:13,479 Epoch: [19][800/1562] (30478)	Time 0.131s	Speed 245.0 samples/s	Data 0.012s	Loss 0.27217	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.488	
+2023-05-26 02:02:25,993 Epoch: [19][900/1562] (30578)	Time 0.130s	Speed 246.1 samples/s	Data 0.011s	Loss 0.27466	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.375	
+2023-05-26 02:02:38,128 Epoch: [19][1000/1562] (30678)	Time 0.129s	Speed 247.8 samples/s	Data 0.010s	Loss 0.27295	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.466	
+2023-05-26 02:02:49,804 Epoch: [19][1100/1562] (30778)	Time 0.128s	Speed 250.0 samples/s	Data 0.009s	Loss 0.27277	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.435	
+2023-05-26 02:03:01,022 Epoch: [19][1200/1562] (30878)	Time 0.127s	Speed 252.6 samples/s	Data 0.008s	Loss 0.27163	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.482	
+2023-05-26 02:03:12,291 Epoch: [19][1300/1562] (30978)	Time 0.126s	Speed 254.7 samples/s	Data 0.008s	Loss 0.27352	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.397	
+2023-05-26 02:03:24,234 Epoch: [19][1400/1562] (31078)	Time 0.125s	Speed 255.6 samples/s	Data 0.007s	Loss 0.27342	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.415	
+2023-05-26 02:03:35,752 Epoch: [19][1500/1562] (31178)	Time 0.125s	Speed 257.0 samples/s	Data 0.007s	Loss 0.27341	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.400	
+2023-05-26 02:04:06,409 Test: Time 0.070	Loss 0.3702	Acc@1 87.530	
+2023-05-26 02:04:06,412 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:04:16,395 Epoch: [20][0/1562] (31240)	Time 9.685s	Speed 3.3 samples/s	Data 9.545s	Loss 0.08370	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 02:04:28,634 Epoch: [20][100/1562] (31340)	Time 0.217s	Speed 147.4 samples/s	Data 0.095s	Loss 0.25201	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.306	
+2023-05-26 02:04:40,044 Epoch: [20][200/1562] (31440)	Time 0.166s	Speed 193.0 samples/s	Data 0.048s	Loss 0.26235	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.920	
+2023-05-26 02:04:51,663 Epoch: [20][300/1562] (31540)	Time 0.149s	Speed 214.3 samples/s	Data 0.032s	Loss 0.25802	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.020	
+2023-05-26 02:05:02,747 Epoch: [20][400/1562] (31640)	Time 0.140s	Speed 229.0 samples/s	Data 0.024s	Loss 0.25661	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.093	
+2023-05-26 02:05:14,804 Epoch: [20][500/1562] (31740)	Time 0.136s	Speed 235.4 samples/s	Data 0.019s	Loss 0.25649	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.987	
+2023-05-26 02:05:26,780 Epoch: [20][600/1562] (31840)	Time 0.133s	Speed 240.2 samples/s	Data 0.016s	Loss 0.25771	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.916	
+2023-05-26 02:05:38,494 Epoch: [20][700/1562] (31940)	Time 0.131s	Speed 244.4 samples/s	Data 0.014s	Loss 0.25985	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.772	
+2023-05-26 02:05:50,739 Epoch: [20][800/1562] (32040)	Time 0.130s	Speed 246.4 samples/s	Data 0.012s	Loss 0.25688	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.843	
+2023-05-26 02:06:02,307 Epoch: [20][900/1562] (32140)	Time 0.128s	Speed 249.4 samples/s	Data 0.011s	Loss 0.25775	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.805	
+2023-05-26 02:06:13,422 Epoch: [20][1000/1562] (32240)	Time 0.127s	Speed 252.8 samples/s	Data 0.010s	Loss 0.25939	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.784	
+2023-05-26 02:06:25,309 Epoch: [20][1100/1562] (32340)	Time 0.126s	Speed 254.2 samples/s	Data 0.009s	Loss 0.25947	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.758	
+2023-05-26 02:06:36,825 Epoch: [20][1200/1562] (32440)	Time 0.125s	Speed 256.0 samples/s	Data 0.008s	Loss 0.25980	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.768	
+2023-05-26 02:06:48,538 Epoch: [20][1300/1562] (32540)	Time 0.124s	Speed 257.3 samples/s	Data 0.008s	Loss 0.25983	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.791	
+2023-05-26 02:07:00,385 Epoch: [20][1400/1562] (32640)	Time 0.124s	Speed 258.1 samples/s	Data 0.007s	Loss 0.25984	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.788	
+2023-05-26 02:07:11,494 Epoch: [20][1500/1562] (32740)	Time 0.123s	Speed 259.9 samples/s	Data 0.007s	Loss 0.26065	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.789	
+2023-05-26 02:07:42,591 Test: Time 0.071	Loss 0.3426	Acc@1 88.582	
+2023-05-26 02:07:42,595 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:07:52,507 Epoch: [21][0/1562] (32802)	Time 9.503s	Speed 3.4 samples/s	Data 9.355s	Loss 0.53028	Jac (gamma) 0.0000 (0.0000)	Acc@1 81.250	
+2023-05-26 02:08:03,712 Epoch: [21][100/1562] (32902)	Time 0.205s	Speed 156.1 samples/s	Data 0.093s	Loss 0.25586	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.182	
+2023-05-26 02:08:15,422 Epoch: [21][200/1562] (33002)	Time 0.161s	Speed 198.4 samples/s	Data 0.047s	Loss 0.24530	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.433	
+2023-05-26 02:08:27,006 Epoch: [21][300/1562] (33102)	Time 0.146s	Speed 218.9 samples/s	Data 0.031s	Loss 0.24529	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.341	
+2023-05-26 02:08:38,409 Epoch: [21][400/1562] (33202)	Time 0.138s	Speed 231.6 samples/s	Data 0.024s	Loss 0.24553	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.404	
+2023-05-26 02:08:50,098 Epoch: [21][500/1562] (33302)	Time 0.134s	Speed 239.0 samples/s	Data 0.019s	Loss 0.25031	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.199	
+2023-05-26 02:09:01,885 Epoch: [21][600/1562] (33402)	Time 0.131s	Speed 243.8 samples/s	Data 0.016s	Loss 0.24831	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.176	
+2023-05-26 02:09:13,918 Epoch: [21][700/1562] (33502)	Time 0.130s	Speed 246.7 samples/s	Data 0.014s	Loss 0.25095	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.173	
+2023-05-26 02:09:25,222 Epoch: [21][800/1562] (33602)	Time 0.128s	Speed 250.8 samples/s	Data 0.012s	Loss 0.25063	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.210	
+2023-05-26 02:09:37,016 Epoch: [21][900/1562] (33702)	Time 0.127s	Speed 252.9 samples/s	Data 0.011s	Loss 0.25149	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.190	
+2023-05-26 02:09:48,694 Epoch: [21][1000/1562] (33802)	Time 0.126s	Speed 254.9 samples/s	Data 0.010s	Loss 0.25266	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.156	
+2023-05-26 02:10:00,051 Epoch: [21][1100/1562] (33902)	Time 0.124s	Speed 257.1 samples/s	Data 0.009s	Loss 0.25159	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.193	
+2023-05-26 02:10:12,158 Epoch: [21][1200/1562] (34002)	Time 0.124s	Speed 257.7 samples/s	Data 0.008s	Loss 0.24968	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.242	
+2023-05-26 02:10:23,527 Epoch: [21][1300/1562] (34102)	Time 0.123s	Speed 259.4 samples/s	Data 0.008s	Loss 0.24898	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.226	
+2023-05-26 02:10:35,187 Epoch: [21][1400/1562] (34202)	Time 0.123s	Speed 260.4 samples/s	Data 0.007s	Loss 0.24836	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.243	
+2023-05-26 02:10:47,212 Epoch: [21][1500/1562] (34302)	Time 0.123s	Speed 260.8 samples/s	Data 0.007s	Loss 0.24847	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.225	
+2023-05-26 02:11:18,396 Test: Time 0.072	Loss 0.3455	Acc@1 88.151	
+2023-05-26 02:11:18,400 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:11:28,259 Epoch: [22][0/1562] (34364)	Time 9.570s	Speed 3.3 samples/s	Data 9.425s	Loss 0.17013	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.625	
+2023-05-26 02:11:40,494 Epoch: [22][100/1562] (34464)	Time 0.216s	Speed 148.2 samples/s	Data 0.094s	Loss 0.22097	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.172	
+2023-05-26 02:11:52,099 Epoch: [22][200/1562] (34564)	Time 0.166s	Speed 192.5 samples/s	Data 0.047s	Loss 0.22508	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.822	
+2023-05-26 02:12:04,054 Epoch: [22][300/1562] (34664)	Time 0.151s	Speed 212.3 samples/s	Data 0.032s	Loss 0.22267	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.964	
+2023-05-26 02:12:15,894 Epoch: [22][400/1562] (34764)	Time 0.143s	Speed 224.3 samples/s	Data 0.024s	Loss 0.22248	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.106	
+2023-05-26 02:12:27,811 Epoch: [22][500/1562] (34864)	Time 0.138s	Speed 231.9 samples/s	Data 0.019s	Loss 0.22720	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.935	
+2023-05-26 02:12:39,809 Epoch: [22][600/1562] (34964)	Time 0.135s	Speed 237.1 samples/s	Data 0.016s	Loss 0.22723	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.003	
+2023-05-26 02:12:51,523 Epoch: [22][700/1562] (35064)	Time 0.132s	Speed 241.6 samples/s	Data 0.014s	Loss 0.22939	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.887	
+2023-05-26 02:13:03,522 Epoch: [22][800/1562] (35164)	Time 0.131s	Speed 244.5 samples/s	Data 0.012s	Loss 0.23063	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.870	
+2023-05-26 02:13:15,647 Epoch: [22][900/1562] (35264)	Time 0.130s	Speed 246.5 samples/s	Data 0.011s	Loss 0.23422	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.735	
+2023-05-26 02:13:27,245 Epoch: [22][1000/1562] (35364)	Time 0.128s	Speed 249.2 samples/s	Data 0.010s	Loss 0.23572	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.721	
+2023-05-26 02:13:39,373 Epoch: [22][1100/1562] (35464)	Time 0.128s	Speed 250.4 samples/s	Data 0.009s	Loss 0.23513	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.726	
+2023-05-26 02:13:51,529 Epoch: [22][1200/1562] (35564)	Time 0.127s	Speed 251.5 samples/s	Data 0.008s	Loss 0.23539	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.733	
+2023-05-26 02:14:03,010 Epoch: [22][1300/1562] (35664)	Time 0.126s	Speed 253.4 samples/s	Data 0.008s	Loss 0.23730	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.636	
+2023-05-26 02:14:14,539 Epoch: [22][1400/1562] (35764)	Time 0.126s	Speed 254.9 samples/s	Data 0.007s	Loss 0.23567	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.729	
+2023-05-26 02:14:26,136 Epoch: [22][1500/1562] (35864)	Time 0.125s	Speed 256.2 samples/s	Data 0.007s	Loss 0.23550	Jac (gamma) 0.0000 (0.0000)	Acc@1 91.739	
+2023-05-26 02:14:58,046 Test: Time 0.071	Loss 0.3515	Acc@1 88.532	
+2023-05-26 02:14:58,051 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:15:07,737 Epoch: [23][0/1562] (35926)	Time 9.383s	Speed 3.4 samples/s	Data 9.243s	Loss 0.02189	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 02:15:19,180 Epoch: [23][100/1562] (36026)	Time 0.206s	Speed 155.2 samples/s	Data 0.092s	Loss 0.22080	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.605	
+2023-05-26 02:15:31,170 Epoch: [23][200/1562] (36126)	Time 0.163s	Speed 196.0 samples/s	Data 0.046s	Loss 0.21882	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.771	
+2023-05-26 02:15:41,946 Epoch: [23][300/1562] (36226)	Time 0.145s	Speed 221.0 samples/s	Data 0.031s	Loss 0.21367	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.805	
+2023-05-26 02:15:54,142 Epoch: [23][400/1562] (36326)	Time 0.139s	Speed 230.0 samples/s	Data 0.023s	Loss 0.21671	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.675	
+2023-05-26 02:16:05,196 Epoch: [23][500/1562] (36426)	Time 0.133s	Speed 239.9 samples/s	Data 0.019s	Loss 0.21244	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.740	
+2023-05-26 02:16:16,809 Epoch: [23][600/1562] (36526)	Time 0.131s	Speed 245.1 samples/s	Data 0.016s	Loss 0.21601	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.538	
+2023-05-26 02:16:28,066 Epoch: [23][700/1562] (36626)	Time 0.128s	Speed 250.0 samples/s	Data 0.014s	Loss 0.21951	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.381	
+2023-05-26 02:16:39,235 Epoch: [23][800/1562] (36726)	Time 0.126s	Speed 254.1 samples/s	Data 0.012s	Loss 0.22247	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.240	
+2023-05-26 02:16:51,074 Epoch: [23][900/1562] (36826)	Time 0.125s	Speed 255.8 samples/s	Data 0.011s	Loss 0.22371	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.158	
+2023-05-26 02:17:02,957 Epoch: [23][1000/1562] (36926)	Time 0.124s	Speed 257.1 samples/s	Data 0.010s	Loss 0.22472	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.120	
+2023-05-26 02:17:14,352 Epoch: [23][1100/1562] (37026)	Time 0.124s	Speed 259.1 samples/s	Data 0.009s	Loss 0.22571	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.092	
+2023-05-26 02:17:25,404 Epoch: [23][1200/1562] (37126)	Time 0.122s	Speed 261.4 samples/s	Data 0.008s	Loss 0.22549	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.093	
+2023-05-26 02:17:36,704 Epoch: [23][1300/1562] (37226)	Time 0.122s	Speed 262.9 samples/s	Data 0.007s	Loss 0.22626	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.076	
+2023-05-26 02:17:48,681 Epoch: [23][1400/1562] (37326)	Time 0.122s	Speed 263.2 samples/s	Data 0.007s	Loss 0.22483	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.122	
+2023-05-26 02:18:00,068 Epoch: [23][1500/1562] (37426)	Time 0.121s	Speed 264.3 samples/s	Data 0.006s	Loss 0.22497	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.109	
+2023-05-26 02:18:31,275 Test: Time 0.071	Loss 0.3297	Acc@1 89.153	
+2023-05-26 02:18:31,278 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:18:41,181 Epoch: [24][0/1562] (37488)	Time 9.499s	Speed 3.4 samples/s	Data 9.367s	Loss 0.20484	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 02:18:54,106 Epoch: [24][100/1562] (37588)	Time 0.222s	Speed 144.1 samples/s	Data 0.093s	Loss 0.20840	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.760	
+2023-05-26 02:19:05,858 Epoch: [24][200/1562] (37688)	Time 0.170s	Speed 188.2 samples/s	Data 0.047s	Loss 0.20758	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.677	
+2023-05-26 02:19:17,231 Epoch: [24][300/1562] (37788)	Time 0.151s	Speed 211.5 samples/s	Data 0.031s	Loss 0.20879	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.743	
+2023-05-26 02:19:28,717 Epoch: [24][400/1562] (37888)	Time 0.142s	Speed 225.0 samples/s	Data 0.024s	Loss 0.20317	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.901	
+2023-05-26 02:19:39,664 Epoch: [24][500/1562] (37988)	Time 0.136s	Speed 235.8 samples/s	Data 0.019s	Loss 0.20510	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.864	
+2023-05-26 02:19:51,499 Epoch: [24][600/1562] (38088)	Time 0.133s	Speed 241.0 samples/s	Data 0.016s	Loss 0.20530	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.798	
+2023-05-26 02:20:03,820 Epoch: [24][700/1562] (38188)	Time 0.131s	Speed 243.5 samples/s	Data 0.014s	Loss 0.20856	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.685	
+2023-05-26 02:20:16,045 Epoch: [24][800/1562] (38288)	Time 0.130s	Speed 245.6 samples/s	Data 0.012s	Loss 0.20883	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.693	
+2023-05-26 02:20:27,250 Epoch: [24][900/1562] (38388)	Time 0.128s	Speed 249.5 samples/s	Data 0.011s	Loss 0.20986	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.685	
+2023-05-26 02:20:38,757 Epoch: [24][1000/1562] (38488)	Time 0.127s	Speed 252.1 samples/s	Data 0.010s	Loss 0.20965	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.670	
+2023-05-26 02:20:50,366 Epoch: [24][1100/1562] (38588)	Time 0.126s	Speed 254.1 samples/s	Data 0.009s	Loss 0.21040	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.620	
+2023-05-26 02:21:01,915 Epoch: [24][1200/1562] (38688)	Time 0.125s	Speed 255.8 samples/s	Data 0.008s	Loss 0.20963	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.696	
+2023-05-26 02:21:14,230 Epoch: [24][1300/1562] (38788)	Time 0.125s	Speed 256.1 samples/s	Data 0.008s	Loss 0.21080	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.659	
+2023-05-26 02:21:25,678 Epoch: [24][1400/1562] (38888)	Time 0.124s	Speed 257.7 samples/s	Data 0.007s	Loss 0.21020	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.682	
+2023-05-26 02:21:37,705 Epoch: [24][1500/1562] (38988)	Time 0.124s	Speed 258.2 samples/s	Data 0.007s	Loss 0.21050	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.634	
+2023-05-26 02:22:09,000 Test: Time 0.071	Loss 0.3270	Acc@1 88.942	
+2023-05-26 02:22:09,004 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:22:18,727 Epoch: [25][0/1562] (39050)	Time 9.410s	Speed 3.4 samples/s	Data 9.276s	Loss 0.23288	Jac (gamma) 0.0000 (0.0000)	Acc@1 87.500	
+2023-05-26 02:22:30,394 Epoch: [25][100/1562] (39150)	Time 0.209s	Speed 153.4 samples/s	Data 0.092s	Loss 0.19786	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.853	
+2023-05-26 02:22:41,881 Epoch: [25][200/1562] (39250)	Time 0.162s	Speed 197.5 samples/s	Data 0.046s	Loss 0.19439	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.942	
+2023-05-26 02:22:53,650 Epoch: [25][300/1562] (39350)	Time 0.147s	Speed 217.3 samples/s	Data 0.031s	Loss 0.19483	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.002	
+2023-05-26 02:23:05,422 Epoch: [25][400/1562] (39450)	Time 0.140s	Speed 228.7 samples/s	Data 0.023s	Loss 0.19822	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.838	
+2023-05-26 02:23:16,188 Epoch: [25][500/1562] (39550)	Time 0.133s	Speed 239.8 samples/s	Data 0.019s	Loss 0.19832	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.895	
+2023-05-26 02:23:27,866 Epoch: [25][600/1562] (39650)	Time 0.131s	Speed 244.8 samples/s	Data 0.016s	Loss 0.19722	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.918	
+2023-05-26 02:23:39,886 Epoch: [25][700/1562] (39750)	Time 0.129s	Speed 247.7 samples/s	Data 0.014s	Loss 0.19735	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.939	
+2023-05-26 02:23:51,788 Epoch: [25][800/1562] (39850)	Time 0.128s	Speed 250.1 samples/s	Data 0.012s	Loss 0.19816	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.954	
+2023-05-26 02:24:03,419 Epoch: [25][900/1562] (39950)	Time 0.127s	Speed 252.7 samples/s	Data 0.011s	Loss 0.19923	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.956	
+2023-05-26 02:24:15,486 Epoch: [25][1000/1562] (40050)	Time 0.126s	Speed 253.9 samples/s	Data 0.010s	Loss 0.19928	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.920	
+2023-05-26 02:24:26,695 Epoch: [25][1100/1562] (40150)	Time 0.125s	Speed 256.5 samples/s	Data 0.009s	Loss 0.19887	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.958	
+2023-05-26 02:24:37,890 Epoch: [25][1200/1562] (40250)	Time 0.124s	Speed 258.7 samples/s	Data 0.008s	Loss 0.19869	Jac (gamma) 0.0000 (0.0000)	Acc@1 92.967	
+2023-05-26 02:24:49,053 Epoch: [25][1300/1562] (40350)	Time 0.123s	Speed 260.6 samples/s	Data 0.007s	Loss 0.19768	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.046	
+2023-05-26 02:25:00,853 Epoch: [25][1400/1562] (40450)	Time 0.122s	Speed 261.4 samples/s	Data 0.007s	Loss 0.19810	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.018	
+2023-05-26 02:25:12,358 Epoch: [25][1500/1562] (40550)	Time 0.122s	Speed 262.4 samples/s	Data 0.006s	Loss 0.19861	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.011	
+2023-05-26 02:25:43,059 Test: Time 0.070	Loss 0.3245	Acc@1 89.694	
+2023-05-26 02:25:43,066 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:25:52,847 Epoch: [26][0/1562] (40612)	Time 9.393s	Speed 3.4 samples/s	Data 9.258s	Loss 0.31628	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 02:26:04,659 Epoch: [26][100/1562] (40712)	Time 0.210s	Speed 152.4 samples/s	Data 0.092s	Loss 0.17171	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.400	
+2023-05-26 02:26:16,891 Epoch: [26][200/1562] (40812)	Time 0.166s	Speed 192.4 samples/s	Data 0.046s	Loss 0.17144	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.201	
+2023-05-26 02:26:28,281 Epoch: [26][300/1562] (40912)	Time 0.149s	Speed 214.9 samples/s	Data 0.031s	Loss 0.17779	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.854	
+2023-05-26 02:26:39,490 Epoch: [26][400/1562] (41012)	Time 0.140s	Speed 229.0 samples/s	Data 0.023s	Loss 0.17741	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.851	
+2023-05-26 02:26:50,642 Epoch: [26][500/1562] (41112)	Time 0.134s	Speed 238.6 samples/s	Data 0.019s	Loss 0.17980	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.725	
+2023-05-26 02:27:02,106 Epoch: [26][600/1562] (41212)	Time 0.131s	Speed 244.5 samples/s	Data 0.016s	Loss 0.18111	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.625	
+2023-05-26 02:27:13,979 Epoch: [26][700/1562] (41312)	Time 0.129s	Speed 247.8 samples/s	Data 0.014s	Loss 0.18050	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.674	
+2023-05-26 02:27:24,876 Epoch: [26][800/1562] (41412)	Time 0.127s	Speed 252.7 samples/s	Data 0.012s	Loss 0.18098	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.664	
+2023-05-26 02:27:36,238 Epoch: [26][900/1562] (41512)	Time 0.125s	Speed 255.6 samples/s	Data 0.011s	Loss 0.18045	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.677	
+2023-05-26 02:27:48,081 Epoch: [26][1000/1562] (41612)	Time 0.125s	Speed 257.0 samples/s	Data 0.010s	Loss 0.18247	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.669	
+2023-05-26 02:27:59,805 Epoch: [26][1100/1562] (41712)	Time 0.124s	Speed 258.4 samples/s	Data 0.009s	Loss 0.18388	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.548	
+2023-05-26 02:28:11,505 Epoch: [26][1200/1562] (41812)	Time 0.123s	Speed 259.6 samples/s	Data 0.008s	Loss 0.18586	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.500	
+2023-05-26 02:28:23,280 Epoch: [26][1300/1562] (41912)	Time 0.123s	Speed 260.5 samples/s	Data 0.007s	Loss 0.18676	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.474	
+2023-05-26 02:28:35,399 Epoch: [26][1400/1562] (42012)	Time 0.123s	Speed 260.7 samples/s	Data 0.007s	Loss 0.18713	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.442	
+2023-05-26 02:28:46,767 Epoch: [26][1500/1562] (42112)	Time 0.122s	Speed 262.0 samples/s	Data 0.006s	Loss 0.18733	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.429	
+2023-05-26 02:29:17,592 Test: Time 0.071	Loss 0.3123	Acc@1 89.603	
+2023-05-26 02:29:17,597 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:29:27,325 Epoch: [27][0/1562] (42174)	Time 9.424s	Speed 3.4 samples/s	Data 9.270s	Loss 0.06063	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 02:29:38,686 Epoch: [27][100/1562] (42274)	Time 0.206s	Speed 155.5 samples/s	Data 0.092s	Loss 0.15987	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.812	
+2023-05-26 02:29:49,924 Epoch: [27][200/1562] (42374)	Time 0.159s	Speed 200.9 samples/s	Data 0.046s	Loss 0.15827	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.248	
+2023-05-26 02:30:01,899 Epoch: [27][300/1562] (42474)	Time 0.146s	Speed 218.9 samples/s	Data 0.031s	Loss 0.16530	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.947	
+2023-05-26 02:30:13,494 Epoch: [27][400/1562] (42574)	Time 0.139s	Speed 230.8 samples/s	Data 0.023s	Loss 0.16749	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.898	
+2023-05-26 02:30:26,101 Epoch: [27][500/1562] (42674)	Time 0.136s	Speed 235.1 samples/s	Data 0.019s	Loss 0.17075	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.881	
+2023-05-26 02:30:37,716 Epoch: [27][600/1562] (42774)	Time 0.133s	Speed 241.0 samples/s	Data 0.016s	Loss 0.17605	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.708	
+2023-05-26 02:30:48,990 Epoch: [27][700/1562] (42874)	Time 0.130s	Speed 246.3 samples/s	Data 0.014s	Loss 0.17432	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.853	
+2023-05-26 02:31:01,162 Epoch: [27][800/1562] (42974)	Time 0.129s	Speed 248.2 samples/s	Data 0.012s	Loss 0.17319	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.887	
+2023-05-26 02:31:12,381 Epoch: [27][900/1562] (43074)	Time 0.127s	Speed 251.9 samples/s	Data 0.011s	Loss 0.17454	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.878	
+2023-05-26 02:31:24,253 Epoch: [27][1000/1562] (43174)	Time 0.126s	Speed 253.5 samples/s	Data 0.010s	Loss 0.17516	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.850	
+2023-05-26 02:31:36,177 Epoch: [27][1100/1562] (43274)	Time 0.126s	Speed 254.8 samples/s	Data 0.009s	Loss 0.17465	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.881	
+2023-05-26 02:31:47,848 Epoch: [27][1200/1562] (43374)	Time 0.125s	Speed 256.3 samples/s	Data 0.008s	Loss 0.17414	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.932	
+2023-05-26 02:31:59,973 Epoch: [27][1300/1562] (43474)	Time 0.125s	Speed 256.9 samples/s	Data 0.007s	Loss 0.17592	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.868	
+2023-05-26 02:32:11,722 Epoch: [27][1400/1562] (43574)	Time 0.124s	Speed 257.9 samples/s	Data 0.007s	Loss 0.17576	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.868	
+2023-05-26 02:32:24,428 Epoch: [27][1500/1562] (43674)	Time 0.124s	Speed 257.5 samples/s	Data 0.007s	Loss 0.17608	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.883	
+2023-05-26 02:32:56,287 Test: Time 0.071	Loss 0.3104	Acc@1 89.784	
+2023-05-26 02:32:56,290 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:33:05,988 Epoch: [28][0/1562] (43736)	Time 9.290s	Speed 3.4 samples/s	Data 9.144s	Loss 0.12866	Jac (gamma) 0.0000 (0.0000)	Acc@1 90.625	
+2023-05-26 02:33:17,263 Epoch: [28][100/1562] (43836)	Time 0.204s	Speed 157.2 samples/s	Data 0.091s	Loss 0.16665	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.090	
+2023-05-26 02:33:29,782 Epoch: [28][200/1562] (43936)	Time 0.165s	Speed 194.4 samples/s	Data 0.046s	Loss 0.16173	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.434	
+2023-05-26 02:33:42,126 Epoch: [28][300/1562] (44036)	Time 0.151s	Speed 212.0 samples/s	Data 0.031s	Loss 0.16000	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.414	
+2023-05-26 02:33:54,320 Epoch: [28][400/1562] (44136)	Time 0.144s	Speed 222.7 samples/s	Data 0.023s	Loss 0.16113	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.334	
+2023-05-26 02:34:06,452 Epoch: [28][500/1562] (44236)	Time 0.139s	Speed 229.8 samples/s	Data 0.019s	Loss 0.16338	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.199	
+2023-05-26 02:34:18,362 Epoch: [28][600/1562] (44336)	Time 0.136s	Speed 235.5 samples/s	Data 0.016s	Loss 0.16478	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.145	
+2023-05-26 02:34:29,681 Epoch: [28][700/1562] (44436)	Time 0.133s	Speed 241.3 samples/s	Data 0.013s	Loss 0.16594	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.098	
+2023-05-26 02:34:41,740 Epoch: [28][800/1562] (44536)	Time 0.131s	Speed 244.0 samples/s	Data 0.012s	Loss 0.16572	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.128	
+2023-05-26 02:34:53,560 Epoch: [28][900/1562] (44636)	Time 0.130s	Speed 246.7 samples/s	Data 0.011s	Loss 0.16415	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.187	
+2023-05-26 02:35:05,182 Epoch: [28][1000/1562] (44736)	Time 0.128s	Speed 249.3 samples/s	Data 0.009s	Loss 0.16376	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.212	
+2023-05-26 02:35:16,779 Epoch: [28][1100/1562] (44836)	Time 0.127s	Speed 251.5 samples/s	Data 0.009s	Loss 0.16552	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.133	
+2023-05-26 02:35:29,108 Epoch: [28][1200/1562] (44936)	Time 0.127s	Speed 252.2 samples/s	Data 0.008s	Loss 0.16565	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.151	
+2023-05-26 02:35:40,552 Epoch: [28][1300/1562] (45036)	Time 0.126s	Speed 254.1 samples/s	Data 0.007s	Loss 0.16545	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.185	
+2023-05-26 02:35:52,729 Epoch: [28][1400/1562] (45136)	Time 0.126s	Speed 254.7 samples/s	Data 0.007s	Loss 0.16504	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.178	
+2023-05-26 02:36:04,142 Epoch: [28][1500/1562] (45236)	Time 0.125s	Speed 256.3 samples/s	Data 0.006s	Loss 0.16594	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.162	
+2023-05-26 02:36:35,213 Test: Time 0.071	Loss 0.3239	Acc@1 89.523	
+2023-05-26 02:36:35,218 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:36:45,108 Epoch: [29][0/1562] (45298)	Time 9.583s	Speed 3.3 samples/s	Data 9.437s	Loss 0.03791	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 02:36:56,707 Epoch: [29][100/1562] (45398)	Time 0.210s	Speed 152.6 samples/s	Data 0.094s	Loss 0.14765	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.833	
+2023-05-26 02:37:08,522 Epoch: [29][200/1562] (45498)	Time 0.164s	Speed 194.9 samples/s	Data 0.047s	Loss 0.15002	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.605	
+2023-05-26 02:37:19,701 Epoch: [29][300/1562] (45598)	Time 0.147s	Speed 218.0 samples/s	Data 0.032s	Loss 0.14962	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.591	
+2023-05-26 02:37:31,604 Epoch: [29][400/1562] (45698)	Time 0.140s	Speed 228.8 samples/s	Data 0.024s	Loss 0.15269	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.475	
+2023-05-26 02:37:43,610 Epoch: [29][500/1562] (45798)	Time 0.136s	Speed 235.5 samples/s	Data 0.019s	Loss 0.15167	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.517	
+2023-05-26 02:37:55,590 Epoch: [29][600/1562] (45898)	Time 0.133s	Speed 240.2 samples/s	Data 0.016s	Loss 0.15703	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.369	
+2023-05-26 02:38:07,454 Epoch: [29][700/1562] (45998)	Time 0.131s	Speed 244.0 samples/s	Data 0.014s	Loss 0.15572	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.441	
+2023-05-26 02:38:19,361 Epoch: [29][800/1562] (46098)	Time 0.130s	Speed 246.9 samples/s	Data 0.012s	Loss 0.15644	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.386	
+2023-05-26 02:38:30,843 Epoch: [29][900/1562] (46198)	Time 0.128s	Speed 250.0 samples/s	Data 0.011s	Loss 0.15744	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.336	
+2023-05-26 02:38:43,108 Epoch: [29][1000/1562] (46298)	Time 0.127s	Speed 251.1 samples/s	Data 0.010s	Loss 0.15851	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.306	
+2023-05-26 02:38:54,699 Epoch: [29][1100/1562] (46398)	Time 0.126s	Speed 253.2 samples/s	Data 0.009s	Loss 0.15873	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.272	
+2023-05-26 02:39:06,500 Epoch: [29][1200/1562] (46498)	Time 0.126s	Speed 254.6 samples/s	Data 0.008s	Loss 0.15693	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.333	
+2023-05-26 02:39:18,044 Epoch: [29][1300/1562] (46598)	Time 0.125s	Speed 256.2 samples/s	Data 0.008s	Loss 0.15734	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.314	
+2023-05-26 02:39:29,589 Epoch: [29][1400/1562] (46698)	Time 0.124s	Speed 257.6 samples/s	Data 0.007s	Loss 0.15635	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.363	
+2023-05-26 02:39:40,636 Epoch: [29][1500/1562] (46798)	Time 0.123s	Speed 259.5 samples/s	Data 0.007s	Loss 0.15658	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.362	
+2023-05-26 02:40:12,090 Test: Time 0.071	Loss 0.3276	Acc@1 89.533	
+2023-05-26 02:40:12,095 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:40:22,053 Epoch: [30][0/1562] (46860)	Time 9.634s	Speed 3.3 samples/s	Data 9.499s	Loss 0.10587	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 02:40:34,182 Epoch: [30][100/1562] (46960)	Time 0.215s	Speed 148.5 samples/s	Data 0.094s	Loss 0.13202	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.514	
+2023-05-26 02:40:46,098 Epoch: [30][200/1562] (47060)	Time 0.168s	Speed 191.0 samples/s	Data 0.048s	Loss 0.13894	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.211	
+2023-05-26 02:40:57,367 Epoch: [30][300/1562] (47160)	Time 0.149s	Speed 214.3 samples/s	Data 0.032s	Loss 0.13885	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.162	
+2023-05-26 02:41:08,637 Epoch: [30][400/1562] (47260)	Time 0.140s	Speed 228.3 samples/s	Data 0.024s	Loss 0.14334	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.044	
+2023-05-26 02:41:19,939 Epoch: [30][500/1562] (47360)	Time 0.135s	Speed 237.4 samples/s	Data 0.019s	Loss 0.14344	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.104	
+2023-05-26 02:41:31,493 Epoch: [30][600/1562] (47460)	Time 0.132s	Speed 243.2 samples/s	Data 0.016s	Loss 0.14309	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.081	
+2023-05-26 02:41:43,337 Epoch: [30][700/1562] (47560)	Time 0.130s	Speed 246.7 samples/s	Data 0.014s	Loss 0.14215	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.065	
+2023-05-26 02:41:54,396 Epoch: [30][800/1562] (47660)	Time 0.127s	Speed 251.4 samples/s	Data 0.012s	Loss 0.14268	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.037	
+2023-05-26 02:42:05,222 Epoch: [30][900/1562] (47760)	Time 0.125s	Speed 255.6 samples/s	Data 0.011s	Loss 0.14494	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.957	
+2023-05-26 02:42:16,929 Epoch: [30][1000/1562] (47860)	Time 0.124s	Speed 257.3 samples/s	Data 0.010s	Loss 0.14505	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.946	
+2023-05-26 02:42:28,558 Epoch: [30][1100/1562] (47960)	Time 0.124s	Speed 258.8 samples/s	Data 0.009s	Loss 0.14518	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.936	
+2023-05-26 02:42:40,113 Epoch: [30][1200/1562] (48060)	Time 0.123s	Speed 260.2 samples/s	Data 0.008s	Loss 0.14510	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.957	
+2023-05-26 02:42:52,210 Epoch: [30][1300/1562] (48160)	Time 0.123s	Speed 260.5 samples/s	Data 0.008s	Loss 0.14529	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.951	
+2023-05-26 02:43:03,617 Epoch: [30][1400/1562] (48260)	Time 0.122s	Speed 261.9 samples/s	Data 0.007s	Loss 0.14500	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.972	
+2023-05-26 02:43:14,653 Epoch: [30][1500/1562] (48360)	Time 0.121s	Speed 263.6 samples/s	Data 0.007s	Loss 0.14452	Jac (gamma) 0.0000 (0.0000)	Acc@1 94.972	
+2023-05-26 02:43:46,158 Test: Time 0.071	Loss 0.3279	Acc@1 89.954	
+2023-05-26 02:43:46,160 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:43:55,755 Epoch: [31][0/1562] (48422)	Time 9.185s	Speed 3.5 samples/s	Data 9.041s	Loss 0.03227	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 02:44:07,512 Epoch: [31][100/1562] (48522)	Time 0.207s	Speed 154.3 samples/s	Data 0.090s	Loss 0.13289	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.483	
+2023-05-26 02:44:18,856 Epoch: [31][200/1562] (48622)	Time 0.161s	Speed 199.2 samples/s	Data 0.045s	Loss 0.14057	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.165	
+2023-05-26 02:44:31,148 Epoch: [31][300/1562] (48722)	Time 0.148s	Speed 216.1 samples/s	Data 0.030s	Loss 0.13772	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.255	
+2023-05-26 02:44:42,791 Epoch: [31][400/1562] (48822)	Time 0.140s	Speed 228.2 samples/s	Data 0.023s	Loss 0.13667	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.309	
+2023-05-26 02:44:54,525 Epoch: [31][500/1562] (48922)	Time 0.136s	Speed 235.9 samples/s	Data 0.018s	Loss 0.13642	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.222	
+2023-05-26 02:45:06,505 Epoch: [31][600/1562] (49022)	Time 0.133s	Speed 240.6 samples/s	Data 0.015s	Loss 0.13970	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.081	
+2023-05-26 02:45:18,588 Epoch: [31][700/1562] (49122)	Time 0.131s	Speed 243.8 samples/s	Data 0.013s	Loss 0.13845	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.105	
+2023-05-26 02:45:29,959 Epoch: [31][800/1562] (49222)	Time 0.129s	Speed 247.9 samples/s	Data 0.012s	Loss 0.13907	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.073	
+2023-05-26 02:45:42,284 Epoch: [31][900/1562] (49322)	Time 0.128s	Speed 249.2 samples/s	Data 0.010s	Loss 0.13846	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.123	
+2023-05-26 02:45:54,095 Epoch: [31][1000/1562] (49422)	Time 0.127s	Speed 251.2 samples/s	Data 0.009s	Loss 0.13902	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.092	
+2023-05-26 02:46:06,407 Epoch: [31][1100/1562] (49522)	Time 0.127s	Speed 252.0 samples/s	Data 0.009s	Loss 0.13913	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.087	
+2023-05-26 02:46:18,420 Epoch: [31][1200/1562] (49622)	Time 0.126s	Speed 253.1 samples/s	Data 0.008s	Loss 0.13856	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.106	
+2023-05-26 02:46:30,479 Epoch: [31][1300/1562] (49722)	Time 0.126s	Speed 254.0 samples/s	Data 0.007s	Loss 0.13860	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.088	
+2023-05-26 02:46:41,945 Epoch: [31][1400/1562] (49822)	Time 0.125s	Speed 255.6 samples/s	Data 0.007s	Loss 0.13913	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.099	
+2023-05-26 02:46:53,860 Epoch: [31][1500/1562] (49922)	Time 0.125s	Speed 256.5 samples/s	Data 0.006s	Loss 0.13893	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.114	
+2023-05-26 02:47:24,771 Test: Time 0.072	Loss 0.3087	Acc@1 90.345	
+2023-05-26 02:47:24,775 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:47:34,437 Epoch: [32][0/1562] (49984)	Time 9.244s	Speed 3.5 samples/s	Data 9.094s	Loss 0.10277	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 02:47:46,187 Epoch: [32][100/1562] (50084)	Time 0.208s	Speed 153.9 samples/s	Data 0.090s	Loss 0.12774	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.545	
+2023-05-26 02:47:57,693 Epoch: [32][200/1562] (50184)	Time 0.162s	Speed 197.9 samples/s	Data 0.046s	Loss 0.12574	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.585	
+2023-05-26 02:48:09,928 Epoch: [32][300/1562] (50284)	Time 0.149s	Speed 215.3 samples/s	Data 0.031s	Loss 0.12766	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.556	
+2023-05-26 02:48:22,353 Epoch: [32][400/1562] (50384)	Time 0.143s	Speed 224.5 samples/s	Data 0.023s	Loss 0.12730	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.550	
+2023-05-26 02:48:33,739 Epoch: [32][500/1562] (50484)	Time 0.137s	Speed 233.9 samples/s	Data 0.018s	Loss 0.12806	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.503	
+2023-05-26 02:48:45,575 Epoch: [32][600/1562] (50584)	Time 0.134s	Speed 239.3 samples/s	Data 0.015s	Loss 0.12767	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.575	
+2023-05-26 02:48:56,699 Epoch: [32][700/1562] (50684)	Time 0.131s	Speed 245.1 samples/s	Data 0.013s	Loss 0.12742	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.538	
+2023-05-26 02:49:08,434 Epoch: [32][800/1562] (50784)	Time 0.129s	Speed 248.3 samples/s	Data 0.012s	Loss 0.12851	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.517	
+2023-05-26 02:49:20,698 Epoch: [32][900/1562] (50884)	Time 0.128s	Speed 249.6 samples/s	Data 0.010s	Loss 0.12960	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.470	
+2023-05-26 02:49:32,046 Epoch: [32][1000/1562] (50984)	Time 0.127s	Speed 252.5 samples/s	Data 0.009s	Loss 0.13003	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.436	
+2023-05-26 02:49:43,710 Epoch: [32][1100/1562] (51084)	Time 0.126s	Speed 254.4 samples/s	Data 0.009s	Loss 0.13082	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.433	
+2023-05-26 02:49:55,880 Epoch: [32][1200/1562] (51184)	Time 0.125s	Speed 255.0 samples/s	Data 0.008s	Loss 0.13210	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.392	
+2023-05-26 02:50:07,805 Epoch: [32][1300/1562] (51284)	Time 0.125s	Speed 256.0 samples/s	Data 0.007s	Loss 0.13280	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.357	
+2023-05-26 02:50:19,923 Epoch: [32][1400/1562] (51384)	Time 0.125s	Speed 256.6 samples/s	Data 0.007s	Loss 0.13287	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.356	
+2023-05-26 02:50:31,870 Epoch: [32][1500/1562] (51484)	Time 0.124s	Speed 257.3 samples/s	Data 0.006s	Loss 0.13214	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.382	
+2023-05-26 02:51:03,041 Test: Time 0.071	Loss 0.3084	Acc@1 90.595	
+2023-05-26 02:51:03,045 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:51:13,356 Epoch: [33][0/1562] (51546)	Time 9.935s	Speed 3.2 samples/s	Data 9.796s	Loss 0.05814	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 02:51:25,327 Epoch: [33][100/1562] (51646)	Time 0.217s	Speed 147.5 samples/s	Data 0.097s	Loss 0.12793	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.297	
+2023-05-26 02:51:37,271 Epoch: [33][200/1562] (51746)	Time 0.168s	Speed 190.0 samples/s	Data 0.049s	Loss 0.11932	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.771	
+2023-05-26 02:51:49,199 Epoch: [33][300/1562] (51846)	Time 0.152s	Speed 210.4 samples/s	Data 0.033s	Loss 0.12157	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.556	
+2023-05-26 02:52:00,746 Epoch: [33][400/1562] (51946)	Time 0.143s	Speed 223.8 samples/s	Data 0.025s	Loss 0.12191	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.613	
+2023-05-26 02:52:11,535 Epoch: [33][500/1562] (52046)	Time 0.136s	Speed 235.4 samples/s	Data 0.020s	Loss 0.11978	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.758	
+2023-05-26 02:52:22,933 Epoch: [33][600/1562] (52146)	Time 0.132s	Speed 241.9 samples/s	Data 0.017s	Loss 0.12105	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.705	
+2023-05-26 02:52:34,454 Epoch: [33][700/1562] (52246)	Time 0.130s	Speed 246.4 samples/s	Data 0.014s	Loss 0.12033	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.765	
+2023-05-26 02:52:45,763 Epoch: [33][800/1562] (52346)	Time 0.128s	Speed 250.5 samples/s	Data 0.013s	Loss 0.12222	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.712	
+2023-05-26 02:52:57,232 Epoch: [33][900/1562] (52446)	Time 0.126s	Speed 253.3 samples/s	Data 0.011s	Loss 0.12260	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.734	
+2023-05-26 02:53:09,404 Epoch: [33][1000/1562] (52546)	Time 0.126s	Speed 254.3 samples/s	Data 0.010s	Loss 0.12231	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.717	
+2023-05-26 02:53:21,114 Epoch: [33][1100/1562] (52646)	Time 0.125s	Speed 255.9 samples/s	Data 0.009s	Loss 0.12199	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.754	
+2023-05-26 02:53:32,944 Epoch: [33][1200/1562] (52746)	Time 0.124s	Speed 257.0 samples/s	Data 0.008s	Loss 0.12181	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.772	
+2023-05-26 02:53:44,767 Epoch: [33][1300/1562] (52846)	Time 0.124s	Speed 258.0 samples/s	Data 0.008s	Loss 0.12238	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.748	
+2023-05-26 02:53:56,455 Epoch: [33][1400/1562] (52946)	Time 0.124s	Speed 259.1 samples/s	Data 0.007s	Loss 0.12188	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.742	
+2023-05-26 02:54:07,952 Epoch: [33][1500/1562] (53046)	Time 0.123s	Speed 260.3 samples/s	Data 0.007s	Loss 0.12252	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.726	
+2023-05-26 02:54:38,890 Test: Time 0.071	Loss 0.3040	Acc@1 90.425	
+2023-05-26 02:54:38,893 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:54:48,719 Epoch: [34][0/1562] (53108)	Time 9.538s	Speed 3.4 samples/s	Data 9.391s	Loss 0.21331	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 02:55:00,239 Epoch: [34][100/1562] (53208)	Time 0.208s	Speed 153.5 samples/s	Data 0.093s	Loss 0.11871	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.287	
+2023-05-26 02:55:12,046 Epoch: [34][200/1562] (53308)	Time 0.164s	Speed 195.7 samples/s	Data 0.047s	Loss 0.11475	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.144	
+2023-05-26 02:55:24,151 Epoch: [34][300/1562] (53408)	Time 0.149s	Speed 214.2 samples/s	Data 0.032s	Loss 0.11703	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.107	
+2023-05-26 02:55:35,602 Epoch: [34][400/1562] (53508)	Time 0.141s	Speed 227.4 samples/s	Data 0.024s	Loss 0.11634	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.049	
+2023-05-26 02:55:47,570 Epoch: [34][500/1562] (53608)	Time 0.137s	Speed 234.4 samples/s	Data 0.019s	Loss 0.11510	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.008	
+2023-05-26 02:55:59,783 Epoch: [34][600/1562] (53708)	Time 0.134s	Speed 238.6 samples/s	Data 0.016s	Loss 0.11447	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.059	
+2023-05-26 02:56:11,483 Epoch: [34][700/1562] (53808)	Time 0.132s	Speed 243.0 samples/s	Data 0.014s	Loss 0.11488	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.041	
+2023-05-26 02:56:23,887 Epoch: [34][800/1562] (53908)	Time 0.131s	Speed 244.8 samples/s	Data 0.012s	Loss 0.11507	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.064	
+2023-05-26 02:56:36,124 Epoch: [34][900/1562] (54008)	Time 0.130s	Speed 246.6 samples/s	Data 0.011s	Loss 0.11425	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.091	
+2023-05-26 02:56:47,657 Epoch: [34][1000/1562] (54108)	Time 0.128s	Speed 249.3 samples/s	Data 0.010s	Loss 0.11274	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.138	
+2023-05-26 02:56:59,620 Epoch: [34][1100/1562] (54208)	Time 0.128s	Speed 250.9 samples/s	Data 0.009s	Loss 0.11243	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.146	
+2023-05-26 02:57:10,879 Epoch: [34][1200/1562] (54308)	Time 0.126s	Speed 253.4 samples/s	Data 0.008s	Loss 0.11289	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.152	
+2023-05-26 02:57:22,719 Epoch: [34][1300/1562] (54408)	Time 0.126s	Speed 254.6 samples/s	Data 0.008s	Loss 0.11307	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.111	
+2023-05-26 02:57:33,923 Epoch: [34][1400/1562] (54508)	Time 0.125s	Speed 256.6 samples/s	Data 0.007s	Loss 0.11412	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.045	
+2023-05-26 02:57:45,372 Epoch: [34][1500/1562] (54608)	Time 0.124s	Speed 258.0 samples/s	Data 0.007s	Loss 0.11539	Jac (gamma) 0.0000 (0.0000)	Acc@1 95.999	
+2023-05-26 02:58:16,909 Test: Time 0.072	Loss 0.3037	Acc@1 90.705	
+2023-05-26 02:58:16,914 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 02:58:26,769 Epoch: [35][0/1562] (54670)	Time 9.472s	Speed 3.4 samples/s	Data 9.332s	Loss 0.06980	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 02:58:38,520 Epoch: [35][100/1562] (54770)	Time 0.210s	Speed 152.3 samples/s	Data 0.093s	Loss 0.09661	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.535	
+2023-05-26 02:58:50,449 Epoch: [35][200/1562] (54870)	Time 0.165s	Speed 194.0 samples/s	Data 0.047s	Loss 0.10142	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.346	
+2023-05-26 02:59:02,314 Epoch: [35][300/1562] (54970)	Time 0.150s	Speed 214.0 samples/s	Data 0.031s	Loss 0.10080	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.429	
+2023-05-26 02:59:13,205 Epoch: [35][400/1562] (55070)	Time 0.139s	Speed 229.5 samples/s	Data 0.024s	Loss 0.10070	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.423	
+2023-05-26 02:59:25,172 Epoch: [35][500/1562] (55170)	Time 0.135s	Speed 236.2 samples/s	Data 0.019s	Loss 0.10338	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.357	
+2023-05-26 02:59:36,663 Epoch: [35][600/1562] (55270)	Time 0.132s	Speed 242.3 samples/s	Data 0.016s	Loss 0.10503	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.267	
+2023-05-26 02:59:48,258 Epoch: [35][700/1562] (55370)	Time 0.130s	Speed 246.6 samples/s	Data 0.014s	Loss 0.10663	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.251	
+2023-05-26 03:00:00,945 Epoch: [35][800/1562] (55470)	Time 0.129s	Speed 247.3 samples/s	Data 0.012s	Loss 0.10818	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.223	
+2023-05-26 03:00:13,192 Epoch: [35][900/1562] (55570)	Time 0.129s	Speed 248.8 samples/s	Data 0.011s	Loss 0.10815	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.209	
+2023-05-26 03:00:24,893 Epoch: [35][1000/1562] (55670)	Time 0.127s	Speed 251.0 samples/s	Data 0.010s	Loss 0.10795	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.213	
+2023-05-26 03:00:36,998 Epoch: [35][1100/1562] (55770)	Time 0.127s	Speed 252.2 samples/s	Data 0.009s	Loss 0.10755	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.228	
+2023-05-26 03:00:49,026 Epoch: [35][1200/1562] (55870)	Time 0.126s	Speed 253.3 samples/s	Data 0.008s	Loss 0.10838	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.175	
+2023-05-26 03:01:01,669 Epoch: [35][1300/1562] (55970)	Time 0.126s	Speed 253.3 samples/s	Data 0.008s	Loss 0.10942	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.121	
+2023-05-26 03:01:12,917 Epoch: [35][1400/1562] (56070)	Time 0.125s	Speed 255.3 samples/s	Data 0.007s	Loss 0.10959	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.114	
+2023-05-26 03:01:24,744 Epoch: [35][1500/1562] (56170)	Time 0.125s	Speed 256.2 samples/s	Data 0.007s	Loss 0.10920	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.144	
+2023-05-26 03:01:56,540 Test: Time 0.073	Loss 0.3060	Acc@1 90.785	
+2023-05-26 03:01:56,542 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:02:06,232 Epoch: [36][0/1562] (56232)	Time 9.314s	Speed 3.4 samples/s	Data 9.187s	Loss 0.08789	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 03:02:17,713 Epoch: [36][100/1562] (56332)	Time 0.206s	Speed 155.4 samples/s	Data 0.091s	Loss 0.09686	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.627	
+2023-05-26 03:02:28,893 Epoch: [36][200/1562] (56432)	Time 0.159s	Speed 201.2 samples/s	Data 0.046s	Loss 0.10047	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.502	
+2023-05-26 03:02:40,365 Epoch: [36][300/1562] (56532)	Time 0.144s	Speed 221.7 samples/s	Data 0.031s	Loss 0.09949	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.647	
+2023-05-26 03:02:52,087 Epoch: [36][400/1562] (56632)	Time 0.138s	Speed 232.6 samples/s	Data 0.023s	Loss 0.10039	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.680	
+2023-05-26 03:03:04,188 Epoch: [36][500/1562] (56732)	Time 0.134s	Speed 238.3 samples/s	Data 0.019s	Loss 0.09934	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.675	
+2023-05-26 03:03:15,364 Epoch: [36][600/1562] (56832)	Time 0.131s	Speed 245.2 samples/s	Data 0.016s	Loss 0.10121	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.636	
+2023-05-26 03:03:27,306 Epoch: [36][700/1562] (56932)	Time 0.129s	Speed 248.2 samples/s	Data 0.013s	Loss 0.10144	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.599	
+2023-05-26 03:03:38,908 Epoch: [36][800/1562] (57032)	Time 0.127s	Speed 251.3 samples/s	Data 0.012s	Loss 0.10086	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.629	
+2023-05-26 03:03:51,457 Epoch: [36][900/1562] (57132)	Time 0.127s	Speed 251.7 samples/s	Data 0.011s	Loss 0.09942	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.670	
+2023-05-26 03:04:03,115 Epoch: [36][1000/1562] (57232)	Time 0.126s	Speed 253.8 samples/s	Data 0.010s	Loss 0.09979	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.631	
+2023-05-26 03:04:14,534 Epoch: [36][1100/1562] (57332)	Time 0.125s	Speed 256.0 samples/s	Data 0.009s	Loss 0.09986	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.597	
+2023-05-26 03:04:26,767 Epoch: [36][1200/1562] (57432)	Time 0.125s	Speed 256.5 samples/s	Data 0.008s	Loss 0.09949	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.591	
+2023-05-26 03:04:38,512 Epoch: [36][1300/1562] (57532)	Time 0.124s	Speed 257.6 samples/s	Data 0.007s	Loss 0.10094	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.527	
+2023-05-26 03:04:49,717 Epoch: [36][1400/1562] (57632)	Time 0.123s	Speed 259.5 samples/s	Data 0.007s	Loss 0.10206	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.496	
+2023-05-26 03:05:01,418 Epoch: [36][1500/1562] (57732)	Time 0.123s	Speed 260.3 samples/s	Data 0.006s	Loss 0.10279	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.448	
+2023-05-26 03:05:32,617 Test: Time 0.071	Loss 0.3064	Acc@1 90.675	
+2023-05-26 03:05:32,621 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:05:42,272 Epoch: [37][0/1562] (57794)	Time 9.321s	Speed 3.4 samples/s	Data 9.180s	Loss 0.16416	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 03:05:53,721 Epoch: [37][100/1562] (57894)	Time 0.206s	Speed 155.6 samples/s	Data 0.091s	Loss 0.08841	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.782	
+2023-05-26 03:06:05,863 Epoch: [37][200/1562] (57994)	Time 0.164s	Speed 195.4 samples/s	Data 0.046s	Loss 0.09850	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.549	
+2023-05-26 03:06:17,497 Epoch: [37][300/1562] (58094)	Time 0.148s	Speed 216.2 samples/s	Data 0.031s	Loss 0.09729	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.512	
+2023-05-26 03:06:29,060 Epoch: [37][400/1562] (58194)	Time 0.140s	Speed 228.7 samples/s	Data 0.023s	Loss 0.09639	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.649	
+2023-05-26 03:06:40,688 Epoch: [37][500/1562] (58294)	Time 0.135s	Speed 236.7 samples/s	Data 0.019s	Loss 0.09593	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.669	
+2023-05-26 03:06:52,034 Epoch: [37][600/1562] (58394)	Time 0.132s	Speed 243.2 samples/s	Data 0.016s	Loss 0.09723	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.646	
+2023-05-26 03:07:03,676 Epoch: [37][700/1562] (58494)	Time 0.129s	Speed 247.3 samples/s	Data 0.013s	Loss 0.09735	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.616	
+2023-05-26 03:07:14,794 Epoch: [37][800/1562] (58594)	Time 0.127s	Speed 251.7 samples/s	Data 0.012s	Loss 0.09778	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.618	
+2023-05-26 03:07:27,044 Epoch: [37][900/1562] (58694)	Time 0.127s	Speed 252.7 samples/s	Data 0.011s	Loss 0.09768	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.636	
+2023-05-26 03:07:38,898 Epoch: [37][1000/1562] (58794)	Time 0.126s	Speed 254.3 samples/s	Data 0.010s	Loss 0.09768	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.610	
+2023-05-26 03:07:50,239 Epoch: [37][1100/1562] (58894)	Time 0.125s	Speed 256.6 samples/s	Data 0.009s	Loss 0.09802	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.594	
+2023-05-26 03:08:02,141 Epoch: [37][1200/1562] (58994)	Time 0.124s	Speed 257.6 samples/s	Data 0.008s	Loss 0.09886	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.563	
+2023-05-26 03:08:13,461 Epoch: [37][1300/1562] (59094)	Time 0.123s	Speed 259.4 samples/s	Data 0.007s	Loss 0.09941	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.541	
+2023-05-26 03:08:24,804 Epoch: [37][1400/1562] (59194)	Time 0.123s	Speed 260.9 samples/s	Data 0.007s	Loss 0.09963	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.538	
+2023-05-26 03:08:36,328 Epoch: [37][1500/1562] (59294)	Time 0.122s	Speed 261.9 samples/s	Data 0.006s	Loss 0.09955	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.561	
+2023-05-26 03:09:07,221 Test: Time 0.070	Loss 0.3070	Acc@1 90.895	
+2023-05-26 03:09:07,225 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:09:17,147 Epoch: [38][0/1562] (59356)	Time 9.534s	Speed 3.4 samples/s	Data 9.395s	Loss 0.07644	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 03:09:28,715 Epoch: [38][100/1562] (59456)	Time 0.209s	Speed 153.2 samples/s	Data 0.093s	Loss 0.08575	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.999	
+2023-05-26 03:09:40,087 Epoch: [38][200/1562] (59556)	Time 0.162s	Speed 198.1 samples/s	Data 0.047s	Loss 0.09177	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.891	
+2023-05-26 03:09:51,534 Epoch: [38][300/1562] (59656)	Time 0.146s	Speed 219.3 samples/s	Data 0.032s	Loss 0.08994	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.844	
+2023-05-26 03:10:02,591 Epoch: [38][400/1562] (59756)	Time 0.137s	Speed 233.4 samples/s	Data 0.024s	Loss 0.08937	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.922	
+2023-05-26 03:10:14,482 Epoch: [38][500/1562] (59856)	Time 0.133s	Speed 239.8 samples/s	Data 0.019s	Loss 0.08899	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.900	
+2023-05-26 03:10:26,009 Epoch: [38][600/1562] (59956)	Time 0.130s	Speed 245.3 samples/s	Data 0.016s	Loss 0.08985	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.880	
+2023-05-26 03:10:37,721 Epoch: [38][700/1562] (60056)	Time 0.129s	Speed 249.0 samples/s	Data 0.014s	Loss 0.09047	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.893	
+2023-05-26 03:10:48,876 Epoch: [38][800/1562] (60156)	Time 0.126s	Speed 253.1 samples/s	Data 0.012s	Loss 0.09090	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 03:11:00,128 Epoch: [38][900/1562] (60256)	Time 0.125s	Speed 256.3 samples/s	Data 0.011s	Loss 0.09119	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.858	
+2023-05-26 03:11:12,233 Epoch: [38][1000/1562] (60356)	Time 0.124s	Speed 257.0 samples/s	Data 0.010s	Loss 0.09223	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.825	
+2023-05-26 03:11:24,342 Epoch: [38][1100/1562] (60456)	Time 0.124s	Speed 257.7 samples/s	Data 0.009s	Loss 0.09211	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.807	
+2023-05-26 03:11:36,255 Epoch: [38][1200/1562] (60556)	Time 0.124s	Speed 258.6 samples/s	Data 0.008s	Loss 0.09166	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.792	
+2023-05-26 03:11:47,582 Epoch: [38][1300/1562] (60656)	Time 0.123s	Speed 260.3 samples/s	Data 0.008s	Loss 0.09171	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.820	
+2023-05-26 03:11:59,090 Epoch: [38][1400/1562] (60756)	Time 0.122s	Speed 261.5 samples/s	Data 0.007s	Loss 0.09223	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.806	
+2023-05-26 03:12:10,860 Epoch: [38][1500/1562] (60856)	Time 0.122s	Speed 262.1 samples/s	Data 0.007s	Loss 0.09171	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.833	
+2023-05-26 03:12:42,592 Test: Time 0.072	Loss 0.3010	Acc@1 90.976	
+2023-05-26 03:12:42,598 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:12:52,708 Epoch: [39][0/1562] (60918)	Time 9.691s	Speed 3.3 samples/s	Data 9.541s	Loss 0.10618	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 03:13:04,143 Epoch: [39][100/1562] (61018)	Time 0.209s	Speed 153.0 samples/s	Data 0.095s	Loss 0.09588	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.442	
+2023-05-26 03:13:15,634 Epoch: [39][200/1562] (61118)	Time 0.162s	Speed 197.2 samples/s	Data 0.048s	Loss 0.08441	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.093	
+2023-05-26 03:13:27,581 Epoch: [39][300/1562] (61218)	Time 0.148s	Speed 216.1 samples/s	Data 0.032s	Loss 0.08331	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.135	
+2023-05-26 03:13:39,326 Epoch: [39][400/1562] (61318)	Time 0.140s	Speed 227.9 samples/s	Data 0.024s	Loss 0.08789	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.984	
+2023-05-26 03:13:50,635 Epoch: [39][500/1562] (61418)	Time 0.135s	Speed 237.1 samples/s	Data 0.019s	Loss 0.08976	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.919	
+2023-05-26 03:14:02,764 Epoch: [39][600/1562] (61518)	Time 0.133s	Speed 241.2 samples/s	Data 0.016s	Loss 0.08837	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.031	
+2023-05-26 03:14:15,197 Epoch: [39][700/1562] (61618)	Time 0.131s	Speed 243.4 samples/s	Data 0.014s	Loss 0.08900	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.978	
+2023-05-26 03:14:27,274 Epoch: [39][800/1562] (61718)	Time 0.130s	Speed 245.9 samples/s	Data 0.012s	Loss 0.09044	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.906	
+2023-05-26 03:14:38,590 Epoch: [39][900/1562] (61818)	Time 0.128s	Speed 249.5 samples/s	Data 0.011s	Loss 0.08976	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.955	
+2023-05-26 03:14:49,654 Epoch: [39][1000/1562] (61918)	Time 0.127s	Speed 252.9 samples/s	Data 0.010s	Loss 0.08940	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.978	
+2023-05-26 03:15:01,312 Epoch: [39][1100/1562] (62018)	Time 0.126s	Speed 254.8 samples/s	Data 0.009s	Loss 0.08991	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.946	
+2023-05-26 03:15:12,574 Epoch: [39][1200/1562] (62118)	Time 0.125s	Speed 257.0 samples/s	Data 0.008s	Loss 0.08906	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.974	
+2023-05-26 03:15:23,843 Epoch: [39][1300/1562] (62218)	Time 0.124s	Speed 258.9 samples/s	Data 0.008s	Loss 0.08947	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.949	
+2023-05-26 03:15:35,453 Epoch: [39][1400/1562] (62318)	Time 0.123s	Speed 260.0 samples/s	Data 0.007s	Loss 0.08894	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.995	
+2023-05-26 03:15:47,860 Epoch: [39][1500/1562] (62418)	Time 0.123s	Speed 259.9 samples/s	Data 0.007s	Loss 0.08892	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.973	
+2023-05-26 03:16:19,136 Test: Time 0.071	Loss 0.3012	Acc@1 91.256	
+2023-05-26 03:16:19,140 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:16:29,226 Epoch: [40][0/1562] (62480)	Time 9.695s	Speed 3.3 samples/s	Data 9.557s	Loss 0.06470	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 03:16:40,730 Epoch: [40][100/1562] (62580)	Time 0.210s	Speed 152.5 samples/s	Data 0.095s	Loss 0.08014	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.246	
+2023-05-26 03:16:52,586 Epoch: [40][200/1562] (62680)	Time 0.164s	Speed 194.6 samples/s	Data 0.048s	Loss 0.08308	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.077	
+2023-05-26 03:17:04,214 Epoch: [40][300/1562] (62780)	Time 0.148s	Speed 215.6 samples/s	Data 0.032s	Loss 0.08457	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.020	
+2023-05-26 03:17:16,376 Epoch: [40][400/1562] (62880)	Time 0.142s	Speed 225.7 samples/s	Data 0.024s	Loss 0.08511	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.046	
+2023-05-26 03:17:27,925 Epoch: [40][500/1562] (62980)	Time 0.137s	Speed 234.4 samples/s	Data 0.019s	Loss 0.08433	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.081	
+2023-05-26 03:17:39,758 Epoch: [40][600/1562] (63080)	Time 0.133s	Speed 239.7 samples/s	Data 0.016s	Loss 0.08393	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.109	
+2023-05-26 03:17:51,260 Epoch: [40][700/1562] (63180)	Time 0.131s	Speed 244.5 samples/s	Data 0.014s	Loss 0.08664	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.995	
+2023-05-26 03:18:02,903 Epoch: [40][800/1562] (63280)	Time 0.129s	Speed 248.0 samples/s	Data 0.012s	Loss 0.08623	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.000	
+2023-05-26 03:18:14,270 Epoch: [40][900/1562] (63380)	Time 0.127s	Speed 251.3 samples/s	Data 0.011s	Loss 0.08668	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.003	
+2023-05-26 03:18:25,996 Epoch: [40][1000/1562] (63480)	Time 0.126s	Speed 253.3 samples/s	Data 0.010s	Loss 0.08774	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.981	
+2023-05-26 03:18:37,696 Epoch: [40][1100/1562] (63580)	Time 0.125s	Speed 255.0 samples/s	Data 0.009s	Loss 0.08792	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.980	
+2023-05-26 03:18:49,642 Epoch: [40][1200/1562] (63680)	Time 0.125s	Speed 256.0 samples/s	Data 0.008s	Loss 0.08804	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.956	
+2023-05-26 03:19:01,878 Epoch: [40][1300/1562] (63780)	Time 0.125s	Speed 256.4 samples/s	Data 0.008s	Loss 0.08764	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.973	
+2023-05-26 03:19:14,155 Epoch: [40][1400/1562] (63880)	Time 0.125s	Speed 256.7 samples/s	Data 0.007s	Loss 0.08766	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.953	
+2023-05-26 03:19:25,903 Epoch: [40][1500/1562] (63980)	Time 0.124s	Speed 257.7 samples/s	Data 0.007s	Loss 0.08790	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.935	
+2023-05-26 03:19:57,344 Test: Time 0.071	Loss 0.3012	Acc@1 91.186	
+2023-05-26 03:19:57,348 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:20:07,718 Epoch: [41][0/1562] (64042)	Time 10.046s	Speed 3.2 samples/s	Data 9.904s	Loss 0.07074	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 03:20:19,278 Epoch: [41][100/1562] (64142)	Time 0.214s	Speed 149.6 samples/s	Data 0.098s	Loss 0.07562	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.401	
+2023-05-26 03:20:30,895 Epoch: [41][200/1562] (64242)	Time 0.165s	Speed 193.6 samples/s	Data 0.050s	Loss 0.07723	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.326	
+2023-05-26 03:20:43,313 Epoch: [41][300/1562] (64342)	Time 0.152s	Speed 211.0 samples/s	Data 0.033s	Loss 0.07747	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.342	
+2023-05-26 03:20:55,442 Epoch: [41][400/1562] (64442)	Time 0.144s	Speed 222.1 samples/s	Data 0.025s	Loss 0.07891	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.249	
+2023-05-26 03:21:06,965 Epoch: [41][500/1562] (64542)	Time 0.138s	Speed 231.4 samples/s	Data 0.020s	Loss 0.07951	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.274	
+2023-05-26 03:21:19,089 Epoch: [41][600/1562] (64642)	Time 0.135s	Speed 236.2 samples/s	Data 0.017s	Loss 0.08029	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.229	
+2023-05-26 03:21:30,705 Epoch: [41][700/1562] (64742)	Time 0.133s	Speed 241.1 samples/s	Data 0.015s	Loss 0.07897	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.276	
+2023-05-26 03:21:42,649 Epoch: [41][800/1562] (64842)	Time 0.131s	Speed 244.2 samples/s	Data 0.013s	Loss 0.07884	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.273	
+2023-05-26 03:21:54,702 Epoch: [41][900/1562] (64942)	Time 0.130s	Speed 246.4 samples/s	Data 0.011s	Loss 0.07827	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.288	
+2023-05-26 03:22:07,192 Epoch: [41][1000/1562] (65042)	Time 0.129s	Speed 247.3 samples/s	Data 0.010s	Loss 0.07940	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.265	
+2023-05-26 03:22:18,657 Epoch: [41][1100/1562] (65142)	Time 0.128s	Speed 249.9 samples/s	Data 0.009s	Loss 0.07983	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.250	
+2023-05-26 03:22:30,082 Epoch: [41][1200/1562] (65242)	Time 0.127s	Speed 252.2 samples/s	Data 0.009s	Loss 0.07902	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.291	
+2023-05-26 03:22:41,568 Epoch: [41][1300/1562] (65342)	Time 0.126s	Speed 254.0 samples/s	Data 0.008s	Loss 0.07843	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.315	
+2023-05-26 03:22:53,418 Epoch: [41][1400/1562] (65442)	Time 0.125s	Speed 255.1 samples/s	Data 0.007s	Loss 0.07885	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.276	
+2023-05-26 03:23:04,727 Epoch: [41][1500/1562] (65542)	Time 0.125s	Speed 256.8 samples/s	Data 0.007s	Loss 0.08018	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.233	
+2023-05-26 03:23:35,826 Test: Time 0.071	Loss 0.3013	Acc@1 91.196	
+2023-05-26 03:23:35,830 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:23:45,751 Epoch: [42][0/1562] (65604)	Time 9.624s	Speed 3.3 samples/s	Data 9.489s	Loss 0.07587	Jac (gamma) 0.0000 (0.0000)	Acc@1 93.750	
+2023-05-26 03:23:57,870 Epoch: [42][100/1562] (65704)	Time 0.215s	Speed 148.6 samples/s	Data 0.094s	Loss 0.07634	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.618	
+2023-05-26 03:24:09,727 Epoch: [42][200/1562] (65804)	Time 0.167s	Speed 191.4 samples/s	Data 0.048s	Loss 0.07573	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.528	
+2023-05-26 03:24:21,182 Epoch: [42][300/1562] (65904)	Time 0.150s	Speed 213.8 samples/s	Data 0.032s	Loss 0.07603	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.529	
+2023-05-26 03:24:32,879 Epoch: [42][400/1562] (66004)	Time 0.142s	Speed 226.1 samples/s	Data 0.024s	Loss 0.07377	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.623	
+2023-05-26 03:24:44,095 Epoch: [42][500/1562] (66104)	Time 0.136s	Speed 235.9 samples/s	Data 0.019s	Loss 0.07523	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.580	
+2023-05-26 03:24:55,161 Epoch: [42][600/1562] (66204)	Time 0.132s	Speed 243.3 samples/s	Data 0.016s	Loss 0.07370	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.629	
+2023-05-26 03:25:06,407 Epoch: [42][700/1562] (66304)	Time 0.129s	Speed 248.5 samples/s	Data 0.014s	Loss 0.07423	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.619	
+2023-05-26 03:25:17,704 Epoch: [42][800/1562] (66404)	Time 0.127s	Speed 252.3 samples/s	Data 0.012s	Loss 0.07409	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.647	
+2023-05-26 03:25:29,382 Epoch: [42][900/1562] (66504)	Time 0.126s	Speed 254.6 samples/s	Data 0.011s	Loss 0.07431	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.589	
+2023-05-26 03:25:40,911 Epoch: [42][1000/1562] (66604)	Time 0.125s	Speed 256.7 samples/s	Data 0.010s	Loss 0.07517	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.549	
+2023-05-26 03:25:51,857 Epoch: [42][1100/1562] (66704)	Time 0.123s	Speed 259.6 samples/s	Data 0.009s	Loss 0.07574	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.539	
+2023-05-26 03:26:03,213 Epoch: [42][1200/1562] (66804)	Time 0.122s	Speed 261.3 samples/s	Data 0.008s	Loss 0.07639	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.507	
+2023-05-26 03:26:14,731 Epoch: [42][1300/1562] (66904)	Time 0.122s	Speed 262.5 samples/s	Data 0.008s	Loss 0.07669	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.483	
+2023-05-26 03:26:26,049 Epoch: [42][1400/1562] (67004)	Time 0.121s	Speed 263.8 samples/s	Data 0.007s	Loss 0.07700	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.462	
+2023-05-26 03:26:37,315 Epoch: [42][1500/1562] (67104)	Time 0.121s	Speed 265.1 samples/s	Data 0.007s	Loss 0.07655	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.466	
+2023-05-26 03:27:08,790 Test: Time 0.071	Loss 0.3034	Acc@1 91.416	
+2023-05-26 03:27:08,793 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:27:18,484 Epoch: [43][0/1562] (67166)	Time 9.309s	Speed 3.4 samples/s	Data 9.166s	Loss 0.00975	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 03:27:30,049 Epoch: [43][100/1562] (67266)	Time 0.207s	Speed 154.8 samples/s	Data 0.091s	Loss 0.06994	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.556	
+2023-05-26 03:27:41,171 Epoch: [43][200/1562] (67366)	Time 0.159s	Speed 201.0 samples/s	Data 0.046s	Loss 0.07182	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.528	
+2023-05-26 03:27:52,704 Epoch: [43][300/1562] (67466)	Time 0.145s	Speed 221.3 samples/s	Data 0.031s	Loss 0.06965	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.602	
+2023-05-26 03:28:04,524 Epoch: [43][400/1562] (67566)	Time 0.138s	Speed 231.8 samples/s	Data 0.023s	Loss 0.07044	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.569	
+2023-05-26 03:28:16,503 Epoch: [43][500/1562] (67666)	Time 0.134s	Speed 238.1 samples/s	Data 0.019s	Loss 0.07032	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.642	
+2023-05-26 03:28:27,968 Epoch: [43][600/1562] (67766)	Time 0.131s	Speed 244.1 samples/s	Data 0.016s	Loss 0.07150	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.577	
+2023-05-26 03:28:39,665 Epoch: [43][700/1562] (67866)	Time 0.129s	Speed 247.9 samples/s	Data 0.013s	Loss 0.07208	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.521	
+2023-05-26 03:28:51,527 Epoch: [43][800/1562] (67966)	Time 0.128s	Speed 250.4 samples/s	Data 0.012s	Loss 0.07183	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.519	
+2023-05-26 03:29:03,630 Epoch: [43][900/1562] (68066)	Time 0.127s	Speed 251.9 samples/s	Data 0.011s	Loss 0.07231	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.506	
+2023-05-26 03:29:15,766 Epoch: [43][1000/1562] (68166)	Time 0.126s	Speed 253.0 samples/s	Data 0.009s	Loss 0.07196	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.506	
+2023-05-26 03:29:27,508 Epoch: [43][1100/1562] (68266)	Time 0.126s	Speed 254.7 samples/s	Data 0.009s	Loss 0.07274	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.497	
+2023-05-26 03:29:39,190 Epoch: [43][1200/1562] (68366)	Time 0.125s	Speed 256.2 samples/s	Data 0.008s	Loss 0.07270	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.473	
+2023-05-26 03:29:50,594 Epoch: [43][1300/1562] (68466)	Time 0.124s	Speed 257.9 samples/s	Data 0.007s	Loss 0.07282	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.454	
+2023-05-26 03:30:01,738 Epoch: [43][1400/1562] (68566)	Time 0.123s	Speed 259.8 samples/s	Data 0.007s	Loss 0.07281	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.466	
+2023-05-26 03:30:14,421 Epoch: [43][1500/1562] (68666)	Time 0.123s	Speed 259.3 samples/s	Data 0.006s	Loss 0.07394	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.460	
+2023-05-26 03:30:45,352 Test: Time 0.070	Loss 0.3034	Acc@1 91.356	
+2023-05-26 03:30:45,354 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:30:55,054 Epoch: [44][0/1562] (68728)	Time 9.376s	Speed 3.4 samples/s	Data 9.221s	Loss 0.03084	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 03:31:06,381 Epoch: [44][100/1562] (68828)	Time 0.205s	Speed 156.1 samples/s	Data 0.092s	Loss 0.06640	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.710	
+2023-05-26 03:31:18,213 Epoch: [44][200/1562] (68928)	Time 0.162s	Speed 197.7 samples/s	Data 0.046s	Loss 0.07081	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.559	
+2023-05-26 03:31:30,360 Epoch: [44][300/1562] (69028)	Time 0.148s	Speed 215.6 samples/s	Data 0.031s	Loss 0.06894	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.695	
+2023-05-26 03:31:42,700 Epoch: [44][400/1562] (69128)	Time 0.142s	Speed 225.0 samples/s	Data 0.023s	Loss 0.06750	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.756	
+2023-05-26 03:31:54,158 Epoch: [44][500/1562] (69228)	Time 0.137s	Speed 234.1 samples/s	Data 0.019s	Loss 0.06873	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.692	
+2023-05-26 03:32:05,988 Epoch: [44][600/1562] (69328)	Time 0.134s	Speed 239.5 samples/s	Data 0.016s	Loss 0.06993	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.645	
+2023-05-26 03:32:17,559 Epoch: [44][700/1562] (69428)	Time 0.131s	Speed 244.1 samples/s	Data 0.014s	Loss 0.07127	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.593	
+2023-05-26 03:32:29,370 Epoch: [44][800/1562] (69528)	Time 0.129s	Speed 247.2 samples/s	Data 0.012s	Loss 0.07120	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.597	
+2023-05-26 03:32:40,952 Epoch: [44][900/1562] (69628)	Time 0.128s	Speed 250.1 samples/s	Data 0.011s	Loss 0.07046	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.628	
+2023-05-26 03:32:52,296 Epoch: [44][1000/1562] (69728)	Time 0.126s	Speed 253.0 samples/s	Data 0.010s	Loss 0.07169	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.568	
+2023-05-26 03:33:03,991 Epoch: [44][1100/1562] (69828)	Time 0.126s	Speed 254.7 samples/s	Data 0.009s	Loss 0.07264	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.531	
+2023-05-26 03:33:15,418 Epoch: [44][1200/1562] (69928)	Time 0.125s	Speed 256.7 samples/s	Data 0.008s	Loss 0.07222	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.544	
+2023-05-26 03:33:27,670 Epoch: [44][1300/1562] (70028)	Time 0.125s	Speed 257.0 samples/s	Data 0.007s	Loss 0.07211	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.536	
+2023-05-26 03:33:39,640 Epoch: [44][1400/1562] (70128)	Time 0.124s	Speed 257.7 samples/s	Data 0.007s	Loss 0.07193	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.558	
+2023-05-26 03:33:51,116 Epoch: [44][1500/1562] (70228)	Time 0.124s	Speed 259.0 samples/s	Data 0.006s	Loss 0.07223	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.554	
+2023-05-26 03:34:21,578 Test: Time 0.070	Loss 0.3000	Acc@1 91.386	
+2023-05-26 03:34:21,580 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:34:31,150 Epoch: [45][0/1562] (70290)	Time 9.255s	Speed 3.5 samples/s	Data 9.118s	Loss 0.02002	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 03:34:42,335 Epoch: [45][100/1562] (70390)	Time 0.202s	Speed 158.1 samples/s	Data 0.091s	Loss 0.06779	Jac (gamma) 0.0000 (0.0000)	Acc@1 98.020	
+2023-05-26 03:34:53,534 Epoch: [45][200/1562] (70490)	Time 0.157s	Speed 203.3 samples/s	Data 0.046s	Loss 0.07356	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.668	
+2023-05-26 03:35:05,177 Epoch: [45][300/1562] (70590)	Time 0.144s	Speed 222.5 samples/s	Data 0.031s	Loss 0.07233	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.726	
+2023-05-26 03:35:16,438 Epoch: [45][400/1562] (70690)	Time 0.136s	Speed 235.3 samples/s	Data 0.023s	Loss 0.07364	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.545	
+2023-05-26 03:35:28,356 Epoch: [45][500/1562] (70790)	Time 0.133s	Speed 241.2 samples/s	Data 0.019s	Loss 0.07093	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.636	
+2023-05-26 03:35:39,963 Epoch: [45][600/1562] (70890)	Time 0.130s	Speed 246.4 samples/s	Data 0.016s	Loss 0.07165	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.613	
+2023-05-26 03:35:51,545 Epoch: [45][700/1562] (70990)	Time 0.128s	Speed 250.2 samples/s	Data 0.013s	Loss 0.07004	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.673	
+2023-05-26 03:36:03,583 Epoch: [45][800/1562] (71090)	Time 0.127s	Speed 252.1 samples/s	Data 0.012s	Loss 0.07160	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.612	
+2023-05-26 03:36:15,856 Epoch: [45][900/1562] (71190)	Time 0.126s	Speed 253.0 samples/s	Data 0.011s	Loss 0.07088	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.621	
+2023-05-26 03:36:27,781 Epoch: [45][1000/1562] (71290)	Time 0.126s	Speed 254.5 samples/s	Data 0.010s	Loss 0.07039	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.634	
+2023-05-26 03:36:39,046 Epoch: [45][1100/1562] (71390)	Time 0.125s	Speed 256.9 samples/s	Data 0.009s	Loss 0.07118	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.602	
+2023-05-26 03:36:50,670 Epoch: [45][1200/1562] (71490)	Time 0.124s	Speed 258.3 samples/s	Data 0.008s	Loss 0.07144	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.583	
+2023-05-26 03:37:02,735 Epoch: [45][1300/1562] (71590)	Time 0.124s	Speed 258.8 samples/s	Data 0.007s	Loss 0.07073	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.617	
+2023-05-26 03:37:14,144 Epoch: [45][1400/1562] (71690)	Time 0.123s	Speed 260.3 samples/s	Data 0.007s	Loss 0.07094	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.611	
+2023-05-26 03:37:25,850 Epoch: [45][1500/1562] (71790)	Time 0.123s	Speed 261.1 samples/s	Data 0.006s	Loss 0.07083	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.618	
+2023-05-26 03:37:57,113 Test: Time 0.070	Loss 0.3036	Acc@1 91.186	
+2023-05-26 03:37:57,118 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:38:06,545 Epoch: [46][0/1562] (71852)	Time 9.134s	Speed 3.5 samples/s	Data 8.992s	Loss 0.02847	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 03:38:18,429 Epoch: [46][100/1562] (71952)	Time 0.208s	Speed 153.8 samples/s	Data 0.089s	Loss 0.06708	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.896	
+2023-05-26 03:38:30,195 Epoch: [46][200/1562] (72052)	Time 0.163s	Speed 196.2 samples/s	Data 0.045s	Loss 0.06866	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.823	
+2023-05-26 03:38:42,108 Epoch: [46][300/1562] (72152)	Time 0.148s	Speed 215.5 samples/s	Data 0.030s	Loss 0.06957	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.674	
+2023-05-26 03:38:54,360 Epoch: [46][400/1562] (72252)	Time 0.142s	Speed 225.3 samples/s	Data 0.023s	Loss 0.06805	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.678	
+2023-05-26 03:39:05,644 Epoch: [46][500/1562] (72352)	Time 0.136s	Speed 235.0 samples/s	Data 0.018s	Loss 0.06807	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.686	
+2023-05-26 03:39:17,291 Epoch: [46][600/1562] (72452)	Time 0.133s	Speed 240.8 samples/s	Data 0.015s	Loss 0.06805	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.655	
+2023-05-26 03:39:28,884 Epoch: [46][700/1562] (72552)	Time 0.130s	Speed 245.2 samples/s	Data 0.013s	Loss 0.06947	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.579	
+2023-05-26 03:39:40,097 Epoch: [46][800/1562] (72652)	Time 0.128s	Speed 249.6 samples/s	Data 0.012s	Loss 0.06943	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.589	
+2023-05-26 03:39:51,805 Epoch: [46][900/1562] (72752)	Time 0.127s	Speed 252.0 samples/s	Data 0.010s	Loss 0.06966	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.569	
+2023-05-26 03:40:03,743 Epoch: [46][1000/1562] (72852)	Time 0.126s	Speed 253.6 samples/s	Data 0.009s	Loss 0.06823	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.637	
+2023-05-26 03:40:15,478 Epoch: [46][1100/1562] (72952)	Time 0.125s	Speed 255.2 samples/s	Data 0.008s	Loss 0.06838	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.633	
+2023-05-26 03:40:27,143 Epoch: [46][1200/1562] (73052)	Time 0.125s	Speed 256.7 samples/s	Data 0.008s	Loss 0.06807	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.648	
+2023-05-26 03:40:38,161 Epoch: [46][1300/1562] (73152)	Time 0.124s	Speed 259.0 samples/s	Data 0.007s	Loss 0.06841	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.641	
+2023-05-26 03:40:50,137 Epoch: [46][1400/1562] (73252)	Time 0.123s	Speed 259.6 samples/s	Data 0.007s	Loss 0.06923	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.584	
+2023-05-26 03:41:04,014 Epoch: [46][1500/1562] (73352)	Time 0.124s	Speed 257.4 samples/s	Data 0.006s	Loss 0.06925	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.616	
+2023-05-26 03:41:36,923 Test: Time 0.071	Loss 0.3046	Acc@1 91.196	
+2023-05-26 03:41:36,926 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:41:47,114 Epoch: [47][0/1562] (73414)	Time 9.877s	Speed 3.2 samples/s	Data 9.731s	Loss 0.07790	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 03:42:00,896 Epoch: [47][100/1562] (73514)	Time 0.234s	Speed 136.6 samples/s	Data 0.097s	Loss 0.06981	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.896	
+2023-05-26 03:42:13,090 Epoch: [47][200/1562] (73614)	Time 0.178s	Speed 179.4 samples/s	Data 0.049s	Loss 0.07011	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.854	
+2023-05-26 03:42:25,873 Epoch: [47][300/1562] (73714)	Time 0.162s	Speed 198.0 samples/s	Data 0.033s	Loss 0.06746	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.841	
+2023-05-26 03:42:38,663 Epoch: [47][400/1562] (73814)	Time 0.153s	Speed 208.9 samples/s	Data 0.025s	Loss 0.06756	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.880	
+2023-05-26 03:42:50,142 Epoch: [47][500/1562] (73914)	Time 0.146s	Speed 219.9 samples/s	Data 0.020s	Loss 0.06966	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.723	
+2023-05-26 03:43:04,084 Epoch: [47][600/1562] (74014)	Time 0.145s	Speed 221.5 samples/s	Data 0.017s	Loss 0.07106	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.624	
+2023-05-26 03:43:17,892 Epoch: [47][700/1562] (74114)	Time 0.144s	Speed 222.9 samples/s	Data 0.014s	Loss 0.07032	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.628	
+2023-05-26 03:43:31,731 Epoch: [47][800/1562] (74214)	Time 0.143s	Speed 223.9 samples/s	Data 0.013s	Loss 0.07252	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.554	
+2023-05-26 03:43:45,295 Epoch: [47][900/1562] (74314)	Time 0.142s	Speed 225.2 samples/s	Data 0.011s	Loss 0.07194	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.558	
+2023-05-26 03:43:58,256 Epoch: [47][1000/1562] (74414)	Time 0.141s	Speed 227.2 samples/s	Data 0.010s	Loss 0.07228	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.549	
+2023-05-26 03:44:10,914 Epoch: [47][1100/1562] (74514)	Time 0.140s	Speed 229.3 samples/s	Data 0.009s	Loss 0.07200	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.556	
+2023-05-26 03:44:22,878 Epoch: [47][1200/1562] (74614)	Time 0.138s	Speed 232.0 samples/s	Data 0.009s	Loss 0.07172	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.554	
+2023-05-26 03:44:34,411 Epoch: [47][1300/1562] (74714)	Time 0.136s	Speed 235.0 samples/s	Data 0.008s	Loss 0.07144	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.574	
+2023-05-26 03:44:46,129 Epoch: [47][1400/1562] (74814)	Time 0.135s	Speed 237.3 samples/s	Data 0.007s	Loss 0.07091	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.607	
+2023-05-26 03:44:58,086 Epoch: [47][1500/1562] (74914)	Time 0.134s	Speed 239.2 samples/s	Data 0.007s	Loss 0.07115	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.604	
+2023-05-26 03:45:30,029 Test: Time 0.072	Loss 0.3034	Acc@1 91.276	
+2023-05-26 03:45:30,031 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:45:39,597 Epoch: [48][0/1562] (74976)	Time 9.246s	Speed 3.5 samples/s	Data 9.105s	Loss 0.01598	Jac (gamma) 0.0000 (0.0000)	Acc@1 100.000	
+2023-05-26 03:45:51,376 Epoch: [48][100/1562] (75076)	Time 0.208s	Speed 153.7 samples/s	Data 0.090s	Loss 0.06831	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.927	
+2023-05-26 03:46:02,885 Epoch: [48][200/1562] (75176)	Time 0.162s	Speed 197.7 samples/s	Data 0.046s	Loss 0.06275	Jac (gamma) 0.0000 (0.0000)	Acc@1 98.150	
+2023-05-26 03:46:14,845 Epoch: [48][300/1562] (75276)	Time 0.148s	Speed 216.5 samples/s	Data 0.031s	Loss 0.06600	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.955	
+2023-05-26 03:46:26,322 Epoch: [48][400/1562] (75376)	Time 0.140s	Speed 229.3 samples/s	Data 0.023s	Loss 0.06377	Jac (gamma) 0.0000 (0.0000)	Acc@1 98.044	
+2023-05-26 03:46:38,068 Epoch: [48][500/1562] (75476)	Time 0.135s	Speed 236.8 samples/s	Data 0.019s	Loss 0.06609	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.923	
+2023-05-26 03:46:49,401 Epoch: [48][600/1562] (75576)	Time 0.132s	Speed 243.3 samples/s	Data 0.016s	Loss 0.06574	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.905	
+2023-05-26 03:47:00,779 Epoch: [48][700/1562] (75676)	Time 0.129s	Speed 248.1 samples/s	Data 0.013s	Loss 0.06567	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.923	
+2023-05-26 03:47:12,405 Epoch: [48][800/1562] (75776)	Time 0.127s	Speed 251.2 samples/s	Data 0.012s	Loss 0.06580	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.874	
+2023-05-26 03:47:23,794 Epoch: [48][900/1562] (75876)	Time 0.126s	Speed 254.2 samples/s	Data 0.010s	Loss 0.06572	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.870	
+2023-05-26 03:47:35,304 Epoch: [48][1000/1562] (75976)	Time 0.125s	Speed 256.4 samples/s	Data 0.009s	Loss 0.06639	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.793	
+2023-05-26 03:47:46,946 Epoch: [48][1100/1562] (76076)	Time 0.124s	Speed 257.9 samples/s	Data 0.009s	Loss 0.06647	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.800	
+2023-05-26 03:47:58,358 Epoch: [48][1200/1562] (76176)	Time 0.123s	Speed 259.7 samples/s	Data 0.008s	Loss 0.06750	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.775	
+2023-05-26 03:48:09,742 Epoch: [48][1300/1562] (76276)	Time 0.123s	Speed 261.2 samples/s	Data 0.007s	Loss 0.06758	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.757	
+2023-05-26 03:48:21,325 Epoch: [48][1400/1562] (76376)	Time 0.122s	Speed 262.2 samples/s	Data 0.007s	Loss 0.06723	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.761	
+2023-05-26 03:48:33,141 Epoch: [48][1500/1562] (76476)	Time 0.122s	Speed 262.8 samples/s	Data 0.006s	Loss 0.06661	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.785	
+2023-05-26 03:49:03,315 Test: Time 0.069	Loss 0.3055	Acc@1 91.276	
+2023-05-26 03:49:03,321 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:49:13,064 Epoch: [49][0/1562] (76538)	Time 9.439s	Speed 3.4 samples/s	Data 9.309s	Loss 0.06443	Jac (gamma) 0.0000 (0.0000)	Acc@1 96.875	
+2023-05-26 03:49:24,727 Epoch: [49][100/1562] (76638)	Time 0.209s	Speed 153.2 samples/s	Data 0.092s	Loss 0.05990	Jac (gamma) 0.0000 (0.0000)	Acc@1 98.113	
+2023-05-26 03:49:36,426 Epoch: [49][200/1562] (76738)	Time 0.163s	Speed 196.1 samples/s	Data 0.047s	Loss 0.06852	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.699	
+2023-05-26 03:49:48,358 Epoch: [49][300/1562] (76838)	Time 0.149s	Speed 215.3 samples/s	Data 0.031s	Loss 0.06752	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.799	
+2023-05-26 03:50:00,282 Epoch: [49][400/1562] (76938)	Time 0.141s	Speed 226.5 samples/s	Data 0.024s	Loss 0.06863	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.685	
+2023-05-26 03:50:12,880 Epoch: [49][500/1562] (77038)	Time 0.138s	Speed 231.5 samples/s	Data 0.019s	Loss 0.07059	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.611	
+2023-05-26 03:50:24,198 Epoch: [49][600/1562] (77138)	Time 0.134s	Speed 238.7 samples/s	Data 0.016s	Loss 0.06932	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.702	
+2023-05-26 03:50:36,131 Epoch: [49][700/1562] (77238)	Time 0.132s	Speed 242.5 samples/s	Data 0.014s	Loss 0.07050	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.660	
+2023-05-26 03:50:47,989 Epoch: [49][800/1562] (77338)	Time 0.130s	Speed 245.6 samples/s	Data 0.012s	Loss 0.07134	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.616	
+2023-05-26 03:50:59,099 Epoch: [49][900/1562] (77438)	Time 0.128s	Speed 249.7 samples/s	Data 0.011s	Loss 0.07035	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.645	
+2023-05-26 03:51:10,550 Epoch: [49][1000/1562] (77538)	Time 0.127s	Speed 252.4 samples/s	Data 0.010s	Loss 0.06920	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.680	
+2023-05-26 03:51:22,411 Epoch: [49][1100/1562] (77638)	Time 0.126s	Speed 253.9 samples/s	Data 0.009s	Loss 0.06885	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.687	
+2023-05-26 03:51:34,188 Epoch: [49][1200/1562] (77738)	Time 0.125s	Speed 255.3 samples/s	Data 0.008s	Loss 0.06915	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.700	
+2023-05-26 03:51:46,237 Epoch: [49][1300/1562] (77838)	Time 0.125s	Speed 256.0 samples/s	Data 0.007s	Loss 0.06909	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.689	
+2023-05-26 03:51:57,773 Epoch: [49][1400/1562] (77938)	Time 0.124s	Speed 257.4 samples/s	Data 0.007s	Loss 0.06898	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.691	
+2023-05-26 03:52:09,406 Epoch: [49][1500/1562] (78038)	Time 0.124s	Speed 258.5 samples/s	Data 0.007s	Loss 0.06849	Jac (gamma) 0.0000 (0.0000)	Acc@1 97.720	
+2023-05-26 03:52:40,897 Test: Time 0.072	Loss 0.3032	Acc@1 91.396	
+2023-05-26 03:52:40,900 => saving checkpoint to output/cifar10/cls_mdeq_LARGE
+2023-05-26 03:52:41,215 saving final model state to output/cifar10/cls_mdeq_LARGE/final_state.pth.tar
