@@ -1,1 +1,7 @@
-# TFG
+# TFG: Estudio de Modelos Implícitos aplicados a Redes Convolucionales.
+
+En este trabajo de fin de grado se realiza un estudio sobre modelos de aprendizaje profundo implícitos como alternativa a los que actualmente son considerados como estado del arte en el ámbito de la visión por computador. A nivel teórico, se examinan los fundamentos que sustentan el aprendizaje profundo implícito, ventajas e  inconvenientes de este tipo de aprendizaje. A nivel práctico, se centra en el análisis de los modelos implícitos llamados Multiscale Deep Equilibrium Models para resolver problemas de clasificación. Mediante la realización de tres experimentos se han contrastado las ventajas y resultados presentados en https://github.com/locuslab/deq, concluyendo que este tipo de modelos supone una opción a considerar a la hora de resolver un problema de este tipo debido a que los resultados obtenidos han superado a los obtenidos por modelos explícitos.
+
+## Estructura.
+
+El repositorio está organizado en tres directorios. En el directorio `deq` se encuentra el código relativo a los modelos implícitos implementados y los experimentos realizados. Este directorio ha sido clonado de https://github.com/locuslab/deq. En el directorio `explicitos` se encuentra el código relativo a los modelos explícitos implementados y los experimentos realizados. En el directorio `extraccion_resultados` se encuentra el jupyter notebook utilizado para extraer los datos de entrenamiento de los modelos involucrados en los experimentos.
