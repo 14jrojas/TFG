@@ -27,7 +27,7 @@ def get_model_summary(model, *input_tensors, item_length=26, verbose=False):
     layer_instances = {}
 
     def add_hooks(module):
-
+        
         def hook(module, input, output):
             class_name = str(module.__class__.__name__)
 
@@ -73,7 +73,7 @@ def get_model_summary(model, *input_tensors, item_length=26, verbose=False):
                     num_parameters=params,
                     multiply_adds=flops)
             )
-
+            
         if not isinstance(module, nn.ModuleList) \
            and not isinstance(module, nn.Sequential) \
            and module != model:

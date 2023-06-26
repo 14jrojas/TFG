@@ -108,6 +108,7 @@ def main():
     }
 
 	# imprimir parámetros del modelo
+
     print(get_model_summary(model, torch.randn(32, 3, config.MODEL.IMAGE_SIZE[0], config.MODEL.IMAGE_SIZE[0])))
 
     gpus = list(config.GPUS)
